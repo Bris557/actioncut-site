@@ -4,10 +4,9 @@ export type HeroClip = {
   /** Paths under static/. */
   src: string;
   poster: string;
+  /** Second of the clip where the button taps, marked by hand right on the play. */
+  markAt: number;
 };
-
-/** In ActionCut's clips the play sits about two-thirds in: that's where the parent taps. */
-export const MARK_SHARE = 2 / 3;
 
 /** `n` different items in random order; `random` returns [0, 1) like Math.random. */
 export function pickClips<T>(all: readonly T[], n: number, random: () => number): T[] {

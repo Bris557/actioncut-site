@@ -9,7 +9,7 @@ type Props = {
   active: number;
   /** False while the phone is off screen: the active clip pauses. */
   playing: boolean;
-  onTime: (seconds: number, duration: number) => void;
+  onTime: (seconds: number) => void;
   onEnded: () => void;
   /** Autoplay was refused (e.g. battery saver): the caller falls back to the photo. */
   onFail: () => void;
@@ -40,7 +40,14 @@ export default function ViewfinderVideos({clips, active, playing, onTime, onEnde
       if (e instanceof DOMException && e.name === 'AbortError') return;
       onFail();
     });
-  }, [active, playing, onFail]);
+    // Every frame rather than `timeupdate` (a few times a second), so the tap lands on its frame.
+    // An ended clip is skipped: its last frames would otherwise count as a tap in the next one.
+    let frame = requestAnimationFrame(function tick() {
+      if (!video.ended) onTime(video.currentTime);
+      frame = requestAnimationFrame(tick);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [active, playing, onFail, onTime]);
 
   return (
     <>
@@ -58,7 +65,6 @@ export default function ViewfinderVideos({clips, active, playing, onTime, onEnde
           disablePictureInPicture
           preload={i === active ? 'auto' : 'none'}
           aria-hidden="true"
-          onTimeUpdate={i === active ? (e) => onTime(e.currentTarget.currentTime, e.currentTarget.duration) : undefined}
           onEnded={i === active ? onEnded : undefined}
           onError={onFail}
         />

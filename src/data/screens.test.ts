@@ -49,6 +49,17 @@ describe('screenshots', () => {
     }
   });
 
+  it('every hero clip taps at the second marked by hand', () => {
+    expect(HERO_CLIPS.map((clip) => [clip.src, clip.markAt])).toEqual([
+      ['/video/game-1.mp4', 8],
+      ['/video/game-2.mp4', 10],
+      ['/video/game-3.mp4', 4],
+      ['/video/game-4.mp4', 10],
+      ['/video/game-5.mp4', 10],
+      ['/video/game-6.mp4', 15],
+    ]);
+  });
+
   it('every camera photo exists', () => {
     for (const photo of Object.values(CAMERA_PHOTOS)) expect(inStatic(photo), photo).toBe(true);
   });

@@ -41,6 +41,11 @@ export const faqs: Faq[] = [
     link: {label: 'Clip length & custom clips', to: '/guide/clip-length'},
   },
   {
+    q: 'Can I delete the long recordings to free up space?',
+    a: 'Yes. In the event’s Sources, remove a video and tick Also delete the files from this phone. ActionCut first cuts any clips that are still missing, so your moments stay.',
+    link: {label: 'Fix or remove a video', to: '/guide/other-cameras#fix-or-remove-a-video'},
+  },
+  {
     q: 'Do I need an internet connection?',
     a: 'Not for marking or cutting — both happen on your phone.',
   },

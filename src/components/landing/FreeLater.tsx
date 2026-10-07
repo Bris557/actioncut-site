@@ -29,7 +29,7 @@ export default function FreeLater() {
             </li>
             <li>
               <Icon name="users" size={20} />
-              Family access to your highlights library
+              Family access
             </li>
             <li>
               <Icon name="chart" size={20} />

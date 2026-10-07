@@ -1,12 +1,12 @@
 import clsx from 'clsx';
-import {useInView, useReducedMotion} from 'motion/react';
-import {useCallback, useEffect, useRef, useState} from 'react';
+import {AnimatePresence, motion, useInView, useReducedMotion} from 'motion/react';
+import {useCallback, useEffect, useRef, useState, type PointerEvent} from 'react';
 import {CAMERA_PHOTOS} from '@site/src/data/camera';
 import {HERO_CLIPS} from '@site/src/data/heroClips';
 import {site} from '@site/src/data/site';
 import {QUICK_TAGS} from '@site/src/data/tags';
 import {formatClock, heroFrame} from '@site/src/lib/heroLoop';
-import {MARK_SHARE, overlayAfterMark, pickClips, type HeroClip} from '@site/src/lib/heroVideo';
+import {overlayAfterMark, pickClips, type HeroClip} from '@site/src/lib/heroVideo';
 import Icon from '../brand/Icon';
 import Shape from '../brand/Shapes';
 import CameraOverlayMock from '../phone/CameraOverlayMock';
@@ -24,9 +24,39 @@ const CLIPS_PER_VISIT = 3;
 const MARKS_BEFORE = 5;
 /** Quick tags close after 5 s; the tick stops a little later. */
 const TAGS_MS = 5500;
+/** The easter egg: a mouse resting on the playing phone this long, or a tap on a touch screen. */
+const EGG_HOVER_MS = 700;
+const EGG_TOUCH_MS = 4000;
+
+/** A sticker on the phone, found by lingering on it: the clips are real ActionCut clips. */
+function useEasterEgg() {
+  const [shown, setShown] = useState(false);
+  const timer = useRef<number | undefined>(undefined);
+  const clear = () => window.clearTimeout(timer.current);
+  useEffect(() => clear, []);
+  return {
+    shown,
+    onPointerEnter: (e: PointerEvent) => {
+      if (e.pointerType !== 'mouse') return;
+      clear();
+      timer.current = window.setTimeout(() => setShown(true), EGG_HOVER_MS);
+    },
+    onPointerLeave: (e: PointerEvent) => {
+      if (e.pointerType !== 'mouse') return;
+      clear();
+      setShown(false);
+    },
+    onPointerUp: (e: PointerEvent) => {
+      if (e.pointerType === 'mouse') return;
+      clear();
+      setShown(true);
+      timer.current = window.setTimeout(() => setShown(false), EGG_TOUCH_MS);
+    },
+  };
+}
 
 /**
- * Three random game clips loop in the viewfinder; at two-thirds of each the button "taps", the count
+ * Three random game clips loop in the viewfinder; at each clip's key play the button "taps", the count
  * grows and the quick tags open — and stay their 5 s even when the next clip has started.
  */
 function useGameClips(enabled: boolean) {
@@ -62,12 +92,12 @@ function useGameClips(enabled: boolean) {
   }, []);
 
   const onTime = useCallback(
-    (seconds: number, duration: number) => {
-      if (marked.current || !Number.isFinite(duration)) return;
-      const at = duration * MARK_SHARE;
-      if (seconds >= at) mark(seconds - at);
+    (seconds: number) => {
+      const clip = clips[active];
+      if (!clip || marked.current) return;
+      if (seconds >= clip.markAt) mark(seconds - clip.markAt);
     },
-    [mark],
+    [clips, active, mark],
   );
 
   const onEnded = useCallback(() => {
@@ -106,6 +136,7 @@ export default function Hero() {
   }, [reduce]);
 
   const game = useGameClips(!reduce);
+  const egg = useEasterEgg();
   const phone = useRef<HTMLDivElement>(null);
   const inView = useInView(phone, {amount: 0.2});
   // Without the clips (reduced motion, autoplay refused) the photo keeps the old timed loop.
@@ -159,7 +190,31 @@ export default function Hero() {
       </div>
 
       <div className={styles.visual}>
-        <div className={styles.phoneWrap} ref={phone}>
+        <div
+          className={styles.phoneWrap}
+          ref={phone}
+          onPointerEnter={game.live ? egg.onPointerEnter : undefined}
+          onPointerLeave={game.live ? egg.onPointerLeave : undefined}
+          onPointerUp={game.live ? egg.onPointerUp : undefined}>
+          <AnimatePresence>
+            {game.live && egg.shown && (
+              <motion.div
+                className={styles.egg}
+                aria-hidden="true"
+                initial={{opacity: 0, scale: 0.5, rotate: -16, y: 12}}
+                animate={{opacity: 1, scale: 1, rotate: -6, y: 0}}
+                exit={{opacity: 0, scale: 0.85, transition: {duration: 0.18}}}
+                transition={{type: 'spring', stiffness: 520, damping: 22}}>
+                <span className={styles.eggMark}>
+                  <Icon name="crosshair" size={18} />
+                </span>
+                <span>
+                  <strong>Psst… every clip in here was cut by ActionCut.</strong>
+                  <span className={styles.eggSub}>Real kids’ games, filmed from the stands. No editing.</span>
+                </span>
+              </motion.div>
+            )}
+          </AnimatePresence>
           <PhoneFrame label="ActionCut’s floating button over the camera app, with the quick tags Goal, Save and Assist">
             <CameraOverlayMock
               photo={CAMERA_PHOTOS.shot}

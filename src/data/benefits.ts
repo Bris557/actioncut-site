@@ -29,4 +29,8 @@ export const benefits: Benefit[] = [
     title: 'A stream recording or a second camera? Even better.',
     body: 'Import the video into the event, check when it started, and every moment you already marked gets a clip from it too — in one go.',
   },
+  {
+    title: 'Free up your phone, keep the moments.',
+    body: 'Delete the hour-long recordings of games and practices — ActionCut cuts any clips still missing first. Only the moments that matter stay on your phone.',
+  },
 ];
