@@ -1,0 +1,41 @@
+---
+title: Videos from another camera
+description: Use recordings from a second phone or a camera, or a video filmed without an event.
+---
+
+ActionCut finds the recordings made **on this phone** during an event by itself. For anything else — a second phone, a camera, a video filmed without starting an event — use the event’s **Sources**.
+
+:::info How matching works
+ActionCut matches moments to videos by time: it compares when you marked each moment with when each video was recorded. That works when a video’s date and time are right — videos from this phone, or files that kept their original date.
+:::
+
+## Open Sources
+
+Open the event and tap **⋮ → Sources**. You see every video of the event with its time range and how many moments it covers. Tap **Import video** to add more.
+
+<Screen name="Sources" caption="An event’s videos" />
+
+## Scan this phone
+
+First copy the other videos to your phone — from the other phone, a cloud drive or a camera’s memory card. Then choose **Import video → Scan this phone**.
+
+ActionCut looks for videos recorded during the event and offers to import them. Videos whose start time could only be estimated are listed separately under *Start time estimated* — switch them on if they look right.
+
+Every moment covered by more than one video gets a [version](./reviewing-moments.mdx#versions) from each.
+
+## Choose a file
+
+**Import video → Choose a file** lets you pick one video yourself. ActionCut asks **When was it filmed?** and fills in the start time it reads from the file — correct it if the camera’s clock was off.
+
+## Mark moments afterwards
+
+Filmed without starting an event? Start and stop a new event, import the video with **Choose a file**, then play it and tap **+ Instant** or **+ Interval** at the right spots. Tap **Save** to keep the new moments; they appear on the video’s timeline.
+
+## Fix or remove a video
+
+In a video’s **⋮** menu:
+
+- **Adjust recording time** (imported videos) — moves the video on the event’s timeline if its clock was wrong. Its clips are re-cut to match.
+- **Remove from event** — takes the video out of the event. Tick **Also delete the files from this phone** to delete it as well: ActionCut first cuts any clips that are still missing, then Android asks you to confirm.
+
+If you delete a video and later put a copy back on the phone — for example from Google Photos — ActionCut recognizes it by name and length and links it again.
