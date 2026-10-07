@@ -30,7 +30,7 @@ Docusaurus 3.8.1 (TypeScript, React 19) at the **repository root** — there is 
 
 - Design tokens live in `src/css/custom.css` (`--ac-*`, the Android app's light scheme). Light theme only.
 - Copy is English and must match what the Android app does (`/Volumes/devssd/dev/actioncut-app`). No merging clips into one video, no "zero data collection".
-- The APK link is a plain `<a href="/actioncut-latest.apk" download>`, never `<Link>`.
+- The site has no public APK link: CTAs lead to the beta section (`/#beta`, a mailto to `site.contactEmail`). Testers get the direct link `/actioncut-latest.apk` by email.
 - No `Date.now()`/`window` during render; respect reduced motion (see the spec).
 - Spec: `docs/superpowers/specs/2026-10-07-site-redesign-design.md`.
 

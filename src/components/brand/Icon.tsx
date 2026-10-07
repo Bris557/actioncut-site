@@ -5,7 +5,7 @@ export type IconName =
   | 'share' | 'palette' | 'fileUp' | 'sunMoon' | 'video' | 'smartphone' | 'check' | 'play'
   | 'stop' | 'chevronLeft' | 'chevronRight' | 'chevronDown' | 'plus' | 'help' | 'settings'
   | 'more' | 'pencil' | 'arrowLeft' | 'arrowRight' | 'lock' | 'cloud' | 'user' | 'zap'
-  | 'interval' | 'swap';
+  | 'interval' | 'swap' | 'mail';
 
 const PATHS: Record<IconName, ReactNode> = {
   crosshair: (
@@ -174,6 +174,12 @@ const PATHS: Record<IconName, ReactNode> = {
       <path d="M3 12h18" />
       <path d="m7 8-4 4 4 4" />
       <path d="m17 8 4 4-4 4" />
+    </>
+  ),
+  mail: (
+    <>
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
     </>
   ),
   swap: (

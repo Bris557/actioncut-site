@@ -38,6 +38,11 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Is ActionCut free?',
-    a: 'Yes. Download it and use every feature. Optional paid extras, such as cloud storage for your clips, may come later.',
+    a: 'Yes — every feature is free. Optional paid extras, such as cloud storage for your clips, may come later.',
+  },
+  {
+    q: 'How can I try it now?',
+    a: 'ActionCut is in beta testing before it comes to Google Play. Email us and we’ll send you a link to the test version.',
+    link: {label: 'Join the beta', to: '/#beta'},
   },
 ];

@@ -1,5 +1,5 @@
 import type {CSSProperties} from 'react';
-import {site} from '@site/src/data/site';
+import {betaMailto, site} from '@site/src/data/site';
 import Icon from '../brand/Icon';
 import Button from '../ui/Button';
 import Section from '../ui/Section';
@@ -21,16 +21,15 @@ export default function FinalCta() {
       <h2 id="cta-title" className={styles.title}>
         Ready for the next game?
       </h2>
-      <p className="ac-lead">Download ActionCut, start an event before kick-off and tap your way to the highlights.</p>
+      <p className="ac-lead">Join the beta, start an event before kick-off and tap your way to the highlights.</p>
       <div className={styles.ctas}>
-        <Button href={site.apkUrl} download size="l" variant="dark" icon={<Icon name="download" />}>
-          Download for Android
+        <Button href={betaMailto()} size="l" variant="dark" icon={<Icon name="mail" />}>
+          Join the beta
         </Button>
         <span className={styles.meta}>Free · {site.minAndroid}</span>
       </div>
       <div className={styles.badges}>
         <StoreBadge label="Google Play" href={site.googlePlayUrl} />
-        <StoreBadge label="iPhone" href={site.appStoreUrl} />
       </div>
     </Section>
   );

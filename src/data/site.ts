@@ -1,7 +1,10 @@
+import {mailtoLink} from '../lib/mailto';
+
 export type SiteInfo = {
   name: string;
   url: string;
   description: string;
+  /** Direct APK link handed to beta testers by email; not linked from the site. */
   apkUrl: string;
   minAndroid: string;
   minIos: string;
@@ -29,3 +32,12 @@ export const site: SiteInfo = {
   appStoreUrl: null,
   copyrightYear: 2026,
 };
+
+/** "Join the beta" email with a short template the tester fills in. */
+export function betaMailto(): string {
+  return mailtoLink(
+    site.contactEmail ?? '',
+    'ActionCut beta',
+    'Hi! I’d like to test ActionCut.\n\nPhone model:\nAndroid version:\nSport I film:\n',
+  );
+}

@@ -82,7 +82,7 @@ const config: Config = {
         {
           type: 'html',
           position: 'right',
-          value: '<a class="ac-navbar-cta" href="/actioncut-latest.apk" download>Download</a>',
+          value: '<a class="ac-navbar-cta" href="/#beta">Join the beta</a>',
         },
       ],
     },

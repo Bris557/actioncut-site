@@ -31,8 +31,8 @@ export default function Changelog() {
               ))}
             </ul>
             <div className={styles.actions}>
-              <Button href={site.apkUrl} download icon={<Icon name="download" />}>
-                Download for Android
+              <Button to="/#beta" icon={<Icon name="mail" />}>
+                Join the beta
               </Button>
               <span className={styles.req}>Free · {site.minAndroid}</span>
             </div>

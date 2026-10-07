@@ -1,5 +1,6 @@
 import Layout from '@theme/Layout';
 import Benefits from '@site/src/components/landing/Benefits';
+import Beta from '@site/src/components/landing/Beta';
 import ButtonDemo from '@site/src/components/landing/ButtonDemo';
 import Features from '@site/src/components/landing/Features';
 import FinalCta from '@site/src/components/landing/FinalCta';
@@ -25,6 +26,7 @@ export default function Home() {
         <Benefits />
         <IphoneSoon />
         <FreeLater />
+        <Beta />
         <PrivacyFaq />
         <FinalCta />
       </main>

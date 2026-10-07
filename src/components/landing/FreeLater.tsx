@@ -18,7 +18,7 @@ export default function FreeLater() {
           </h2>
         </RevealItem>
         <RevealItem>
-          <p className="ac-lead">No subscription, no account, no ads. Download it and use every feature.</p>
+          <p className="ac-lead">No subscription, no account, no ads — every feature included.</p>
         </RevealItem>
         <RevealItem className={styles.later}>
           <p className={styles.laterLabel}>Coming later — optional extras</p>

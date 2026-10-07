@@ -60,14 +60,13 @@ export default function Hero() {
           clips for you.
         </p>
         <div className={styles.ctas}>
-          <Button href={site.apkUrl} download size="l" icon={<Icon name="download" />}>
-            Download for Android
+          <Button to="/#beta" size="l" icon={<Icon name="mail" />}>
+            Join the beta
           </Button>
           <span className={styles.meta}>Free · {site.minAndroid}</span>
         </div>
         <div className={styles.badges}>
           <StoreBadge label="Google Play" href={site.googlePlayUrl} />
-          <StoreBadge label="iPhone" href={site.appStoreUrl} />
         </div>
         <ul className={styles.trust}>
           {TRUST.map((t) => (

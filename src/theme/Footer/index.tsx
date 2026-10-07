@@ -31,9 +31,9 @@ export default function Footer() {
         <div className={styles.brand}>
           <Logo />
           <p>Mark the best moments while you film.</p>
-          <a className={styles.download} href={site.apkUrl} download>
-            Download for Android
-          </a>
+          <Link className={styles.download} to="/#beta">
+            Join the beta
+          </Link>
         </div>
         {COLUMNS.map((col) => (
           <nav key={col.title} aria-label={col.title} className={styles.col}>

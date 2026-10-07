@@ -7,7 +7,7 @@ import styles from './PrivacyFaq.module.css';
 
 export default function PrivacyFaq() {
   return (
-    <Section id="faq" tone="cream" labelledBy="faq-title" innerClassName={styles.inner}>
+    <Section id="faq" tone="white" labelledBy="faq-title" innerClassName={styles.inner}>
       <RevealGroup className={styles.privacy}>
         <RevealItem className={styles.card}>
           <span className={styles.lock}>
