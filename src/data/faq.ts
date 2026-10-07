@@ -2,6 +2,10 @@ export type Faq = {q: string; a: string; link?: {label: string; to: string}};
 
 export const faqs: Faq[] = [
   {
+    q: 'Who makes ActionCut?',
+    a: 'Parents of young athletes. We built it to stop spending evenings scrubbing through hours of tournament video for our kids’ best moments — and made it for every parent on the sideline.',
+  },
+  {
     q: 'Does ActionCut record video?',
     a: 'No. You record with your usual camera app. ActionCut only remembers when you tapped, then finds the recording on your phone and cuts a short clip around each moment.',
   },
@@ -22,6 +26,10 @@ export const faqs: Faq[] = [
     q: 'Can I use a second phone or camera?',
     a: 'Yes. Copy its videos to your phone, open the event’s Sources and tap Scan this phone. Moments covered by more than one video get a version from each.',
     link: {label: 'Videos from another camera', to: '/guide/other-cameras'},
+  },
+  {
+    q: 'Can I share a clip before the game is over?',
+    a: 'Yes. Stop recording at a break, open the moment in the event, and its clip is cut right away — ready to save or share while the event is still running.',
   },
   {
     q: 'Where do my clips go?',

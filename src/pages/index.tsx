@@ -8,6 +8,7 @@ import FreeLater from '@site/src/components/landing/FreeLater';
 import Gallery from '@site/src/components/landing/Gallery';
 import Hero from '@site/src/components/landing/Hero';
 import HowItWorks from '@site/src/components/landing/HowItWorks';
+import MadeByParents from '@site/src/components/landing/MadeByParents';
 import PrivacyFaq from '@site/src/components/landing/PrivacyFaq';
 import Problem from '@site/src/components/landing/Problem';
 import UseCases from '@site/src/components/landing/UseCases';
@@ -19,6 +20,7 @@ export default function Home() {
       <main>
         <Hero />
         <Problem />
+        <MadeByParents />
         <HowItWorks />
         <ButtonDemo />
         <UseCases />

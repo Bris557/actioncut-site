@@ -19,7 +19,7 @@ export const steps: Step[] = [
   },
   {
     title: 'Review, save, share',
-    body: 'Stop the event and ActionCut cuts a clip around every moment: 5 seconds before your tap, 2 after. Save the best ones to the ActionCut album or share them anywhere.',
+    body: 'Every moment becomes a clip: 5 seconds before your tap, 2 after. No need to wait for the final whistle — stop recording at a break, open a moment and share it. Save the best ones to the ActionCut album.',
     screen: 'event',
   },
 ];

@@ -41,7 +41,7 @@ export default function Hero() {
       <Shape kind="clover" color="var(--ac-secondary-container)" spin className={styles.clover} />
 
       <div className={styles.copy}>
-        <span className="ac-eyebrow">For parents on the sideline</span>
+        <span className="ac-eyebrow">By sports parents, for sports parents</span>
         <h1 id="hero-title" className={styles.title}>
           {LINES.map((line, l) => (
             <span key={line.join(' ')} className={styles.line}>
@@ -57,8 +57,8 @@ export default function Hero() {
           ))}
         </h1>
         <p className="ac-lead">
-          Film your kid’s game with your usual camera. Tap the floating button at every great play — ActionCut cuts the
-          clips for you.
+          Film your kid’s game with your usual camera and tap the floating button at every great play. ActionCut cuts the
+          clips for you — no more digging through hours of video.
         </p>
         <div className={styles.ctas}>
           <Button to="/#beta" size="l" icon={<Icon name="mail" />}>

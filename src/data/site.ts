@@ -21,7 +21,7 @@ export const site: SiteInfo = {
   name: 'ActionCut',
   url: 'https://actioncut.io',
   description:
-    'Film your kid’s game with your usual camera, tap a floating button at every great play, and get a short clip of each moment — cut right on your phone.',
+    'No more digging through hours of game video. Film your kid’s game with your usual camera, tap a floating button at every great play, and get a short clip of each moment — cut right on your phone.',
   apkUrl: '/actioncut-latest.apk',
   minAndroid: 'Android 14 or newer',
   contactEmail: 'pigmentator@gmail.com',

@@ -21,7 +21,7 @@ export default function FinalCta() {
       <h2 id="cta-title" className={styles.title}>
         Ready for the next game?
       </h2>
-      <p className="ac-lead">Join the beta, start an event before kick-off and tap your way to the highlights.</p>
+      <p className="ac-lead">Join the beta and spend the next tournament watching the game — not digging through the video afterwards.</p>
       <div className={styles.ctas}>
         <Button href={betaMailto()} size="l" variant="dark" icon={<Icon name="mail" />}>
           Join the beta

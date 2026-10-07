@@ -31,8 +31,8 @@ export default function Problem() {
         </RevealItem>
         <RevealItem>
           <p className="ac-lead">
-            Nobody scrubs through an hour of shaky footage to find the goal. With ActionCut you mark it the second it
-            happens — and the clip is waiting for you after the game.
+            A tournament weekend leaves hours of video on your phone, and nobody has time to scrub through it for the
+            goal. With ActionCut you mark it the second it happens — and the clip is waiting for you.
           </p>
         </RevealItem>
       </RevealGroup>
