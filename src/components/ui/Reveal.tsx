@@ -13,10 +13,14 @@ const item: Variants = {
 
 type Props = {children: ReactNode; className?: string};
 
-/** Starts its RevealItems one after another the first time it scrolls into view. */
+/**
+ * Starts its RevealItems one after another the first time it scrolls into view.
+ * Triggers on any overlap (shifted up by 12 %): a ratio threshold would never fire
+ * for groups taller than the screen, e.g. the feature bento on a landscape phone.
+ */
 export function RevealGroup({children, className}: Props) {
   return (
-    <motion.div className={className} variants={group} initial="hidden" whileInView="shown" viewport={{once: true, amount: 0.15}}>
+    <motion.div className={className} variants={group} initial="hidden" whileInView="shown" viewport={{once: true, margin: '0px 0px -12% 0px'}}>
       {children}
     </motion.div>
   );

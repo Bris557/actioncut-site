@@ -13,7 +13,8 @@ import Section from '../ui/Section';
 import StoreBadge from '../ui/StoreBadge';
 import styles from './Hero.module.css';
 
-const WORDS = ['Tap.', 'Tag.', 'Done.'];
+// Two fixed lines: the width-axis 'breathe' animation must never re-wrap the headline.
+const LINES = [['Tap.', 'Tag.'], ['Done.']];
 const TRUST = ['No account', 'Videos stay on your phone', 'Works with your camera app'];
 
 export default function Hero() {
@@ -41,9 +42,16 @@ export default function Hero() {
       <div className={styles.copy}>
         <span className="ac-eyebrow">For parents on the sideline</span>
         <h1 id="hero-title" className={styles.title}>
-          {WORDS.map((word, i) => (
-            <span key={word} className={clsx(styles.word, i === WORDS.length - 1 && styles.accent)}>
-              {word}
+          {LINES.map((line, l) => (
+            <span key={line.join(' ')} className={styles.line}>
+              {line.map((word, w) => (
+                <span
+                  key={word}
+                  className={clsx(styles.word, l === LINES.length - 1 && styles.accent)}
+                  style={{animationDelay: `${(l * 2 + w) * 0.12}s`}}>
+                  {word}
+                </span>
+              ))}
             </span>
           ))}
         </h1>

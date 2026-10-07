@@ -33,7 +33,7 @@ ActionCut reads the videos in your gallery only to find the ones recorded during
 ActionCut uses two Google Firebase services:
 
 - **Firebase Crashlytics.** When the app crashes, it sends a crash report: where in the code it failed, the app version, your phone model and Android version, and a random identifier for this installation.
-- **Firebase Analytics.** Basic statistics that Firebase collects automatically, such as when the app was first opened, how long it’s used, the app version, phone model, Android version and approximate country. ActionCut doesn’t add any tracking of its own.
+- **Firebase Analytics.** Basic statistics that Firebase collects automatically, such as when the app was first opened, how long it’s used, the app version, phone model, Android version and approximate country. Firebase links these to an app-instance identifier and, unless you’ve reset or turned it off in your phone’s settings, to your phone’s advertising ID. ActionCut doesn’t add any tracking of its own.
 
 Neither service receives your videos, clips, event names, moment titles or tags. Google processes this data for us under its own terms — see [Privacy and Security in Firebase](https://firebase.google.com/support/privacy).
 

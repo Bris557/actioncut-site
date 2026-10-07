@@ -43,7 +43,7 @@ function StepItem({index, step, active, onActive}: {index: number; step: Step; a
   }, [inView, index, onActive]);
 
   return (
-    <li ref={ref} className={clsx(styles.step, active && styles.stepOn)}>
+    <li ref={ref} className={clsx(styles.step, active && styles.stepOn)} data-reveal="">
       <span className={styles.num}>{index + 1}</span>
       <h3 className={styles.stepTitle}>{step.title}</h3>
       <p className={styles.stepBody}>{step.body}</p>

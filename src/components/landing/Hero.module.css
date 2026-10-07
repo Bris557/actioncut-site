@@ -17,9 +17,6 @@
 }
 
 .title {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 0.22em;
   margin: 0 0 20px;
   font-size: clamp(56px, 9.5vw, 128px);
   line-height: 0.92;
@@ -33,12 +30,13 @@
   animation: rise 0.9s var(--ac-ease-spring) both;
 }
 
-.word:nth-child(2) {
-  animation-delay: 0.12s;
+.line {
+  display: block;
+  white-space: nowrap;
 }
 
-.word:nth-child(3) {
-  animation-delay: 0.24s;
+.word + .word {
+  margin-left: 0.22em;
 }
 
 .accent {
