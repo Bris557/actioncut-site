@@ -411,3 +411,27 @@ p {
   margin-top: 24px;
   margin-bottom: 32px;
 }
+/* Privacy Policy and other MDX pages */
+.ac-legal {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 4px 48px;
+}
+
+.ac-legal h1 {
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1;
+  font-weight: 780;
+  letter-spacing: -0.03em;
+}
+
+.ac-legal h2 {
+  margin-top: 40px;
+  font-size: 26px;
+  font-weight: 720;
+}
+
+.ac-legal table {
+  display: table;
+  width: 100%;
+}
