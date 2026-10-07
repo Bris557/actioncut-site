@@ -1,6 +1,7 @@
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import clsx from 'clsx';
 import {AnimatePresence, motion} from 'motion/react';
+import type {ReactNode} from 'react';
 import type {TagInfo} from '@site/src/data/tags';
 import Icon from '../brand/Icon';
 import TagChip from '../ui/TagChip';
@@ -21,6 +22,8 @@ type Props = {
   chipsVisible?: boolean;
   /** Share of the 5-s quick-tag window left, 1 → 0. */
   countdown?: number;
+  /** Drawn over the photo in the viewfinder, e.g. game videos. */
+  children?: ReactNode;
 };
 
 const ZOOM = ['0.6', '1×', '2', '3', '6'];
@@ -102,6 +105,7 @@ export default function CameraOverlayMock({
   chips = [],
   chipsVisible = false,
   countdown = 1,
+  children,
 }: Props) {
   const photoUrl = useBaseUrl(photo);
   return (
@@ -115,6 +119,7 @@ export default function CameraOverlayMock({
           draggable={false}
           className={styles.photo}
         />
+        {children}
         <span className={styles.grid} />
       </div>
       <CameraChrome recTime={recTime} />

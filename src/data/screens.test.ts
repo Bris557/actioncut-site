@@ -4,6 +4,7 @@ import {describe, expect, it} from 'vitest';
 import {CAMERA_PHOTOS} from './camera';
 import {CLIP_TILES} from './clips';
 import {gallery} from './gallery';
+import {HERO_CLIPS} from './heroClips';
 import {useCases} from './useCases';
 
 const root = process.cwd();
@@ -38,6 +39,14 @@ describe('screenshots', () => {
   it('every clip tile exists', () => {
     expect(CLIP_TILES).toHaveLength(5);
     for (const tile of CLIP_TILES) expect(inStatic(tile.src), tile.src).toBe(true);
+  });
+
+  it('every hero clip has its video and poster', () => {
+    expect(HERO_CLIPS.length).toBeGreaterThanOrEqual(3);
+    for (const clip of HERO_CLIPS) {
+      expect(inStatic(clip.src), clip.src).toBe(true);
+      expect(inStatic(clip.poster), clip.poster).toBe(true);
+    }
   });
 
   it('every camera photo exists', () => {

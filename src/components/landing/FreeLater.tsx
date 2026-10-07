@@ -6,7 +6,7 @@ import styles from './FreeLater.module.css';
 
 export default function FreeLater() {
   return (
-    <Section tone="white" labelledBy="free-title" innerClassName={styles.inner}>
+    <Section tone="brown" labelledBy="free-title" innerClassName={styles.inner}>
       <div className={styles.price} aria-hidden="true">
         <Shape kind="burst" color="var(--ac-orange)" spin className={styles.burst} />
         <span className={styles.priceText}>Free</span>

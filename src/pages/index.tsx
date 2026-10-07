@@ -20,13 +20,13 @@ export default function Home() {
       <main>
         <Hero />
         <Problem />
+        <Benefits />
         <MadeByParents />
         <HowItWorks />
         <ButtonDemo />
         <UseCases />
         <Features />
         <Gallery />
-        <Benefits />
         <FreeLater />
         <Beta />
         <PrivacyFaq />
