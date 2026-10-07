@@ -1,56 +1,44 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code in this repository: the marketing site for ActionCut (actioncut.io).
 
-## Project Structure
+## Stack
 
-This is a Docusaurus-based website located in the `my-website/` directory. The project is a standard Docusaurus v3 site with:
+Docusaurus 3.8.1 (TypeScript, React 19) at the **repository root** — there is no `my-website/` folder. Animations: `motion` 12 (`motion/react`). Tests: vitest. Package manager: npm.
 
-- **Content**: Documentation in `docs/`, blog posts in `blog/`
-- **Components**: React components in `src/components/` 
-- **Pages**: Custom pages in `src/pages/`
-- **Configuration**: Main config in `docusaurus.config.ts`, sidebar config in `sidebars.ts`
-- **Styling**: Custom CSS in `src/css/custom.css`, component-specific CSS modules
+## Commands
 
-## Development Commands
+- `npm start` — dev server
+- `npm test` — vitest (pure logic in `src/lib/*.test.ts`)
+- `npm run typecheck` — TypeScript
+- `npm run build` — static site in `build/` (fails on broken links)
+- `npm run serve` — serve the build
 
-All commands should be run from the `my-website/` directory:
+## Layout
 
-### Package Management
-- Install dependencies: `npm install` or `yarn`
+- `src/pages/index.tsx` — landing page, composed of `src/components/landing/*` (one file per section)
+- `src/data/*` — all landing copy, tags, changelog, site constants (`site.ts`: APK path, contact, store links)
+- `src/lib/*` — pure logic with tests: demo gesture rules, hero loop, changelog, shapes
+- `src/components/phone/*` — phone frame and HTML recreations of the app screens; sizes in `calc(var(--u) * N)`, 1 `--u` = 1 px of a 390-px screen
+- `src/components/ui/*`, `src/components/brand/*` — buttons, chips, sections, reveal, icons, logo, M3 shapes
+- `guide/*.mdx` — the Guide, served at `/guide`; `<Screen>` works in MDX without import
+- `src/pages/changelog.tsx`, `src/pages/privacy.mdx` — Changelog and Privacy Policy
+- `src/theme/` — `Root` (MotionConfig), `Footer`, `MDXComponents`
+- `docs/superpowers/` — internal specs and plans (not published)
 
-### Development
-- Start development server: `npm start` or `yarn start`
-- Build for production: `npm run build` or `yarn build`
-- Serve production build locally: `npm run serve` or `yarn serve`
-- Type checking: `npm run typecheck` or `yarn typecheck`
+## Rules
 
-### Docusaurus-specific
-- Clear cache: `npm run clear` or `yarn clear`
-- Generate translations: `npm run write-translations`
-- Generate heading IDs: `npm run write-heading-ids`
-- Swizzle components: `npm run swizzle`
+- Design tokens live in `src/css/custom.css` (`--ac-*`, the Android app's light scheme). Light theme only.
+- Copy is English and must match what the Android app does (`/Volumes/devssd/dev/actioncut-app`). No merging clips into one video, no "zero data collection".
+- The APK link is a plain `<a href="/actioncut-latest.apk" download>`, never `<Link>`.
+- No `Date.now()`/`window` during render; respect reduced motion (see the spec).
+- Spec: `docs/superpowers/specs/2026-10-07-site-redesign-design.md`.
 
-### Deployment
-- Deploy to GitHub Pages (with SSH): `USE_SSH=true yarn deploy`
-- Deploy to GitHub Pages (without SSH): `GIT_USER=<username> yarn deploy`
+## Releasing a new app version
 
-## Architecture
+1. Replace `static/actioncut-latest.apk`.
+2. Add the release at the top of `src/data/changelog.ts` (`npm test` checks the order).
 
-- **Framework**: Docusaurus 3.8.1 with TypeScript support
-- **React Version**: 19.0.0
-- **Styling**: CSS Modules + custom CSS, uses `clsx` for conditional classes
-- **Content**: MDX support for enhanced markdown with React components
-- **Theme**: Customizable with Prism syntax highlighting (GitHub light/Dracula dark themes)
+## Screenshots
 
-## Key Configuration
-
-- **docusaurus.config.ts**: Main site configuration including navigation, footer, theme settings
-- **sidebars.ts**: Documentation sidebar structure (currently auto-generated from file structure)
-- **tsconfig.json**: Extends Docusaurus TypeScript configuration with baseUrl set to project root
-
-## Content Organization
-
-- Documentation uses auto-generated sidebars from the `docs/` folder structure
-- Blog supports RSS/Atom feeds, reading time estimation, and author management
-- Static assets go in `static/` directory and are served at site root
+Put PNGs (up to 1080 px wide) in `static/img/screens/` and pass `src="/img/screens/<file>.png"` to the matching `<Screen>` in `guide/*.mdx`, or set `screen.src` in `src/data/useCases.ts`. The list of expected files is in README.md.

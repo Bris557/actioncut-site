@@ -60,6 +60,7 @@ const config: Config = {
   ],
 
   themeConfig: {
+    image: 'img/og-card.png',
     metadata: [
       {name: 'keywords', content: 'sports highlights, kids sports video, highlight clips, mark moments, android app'},
     ],
