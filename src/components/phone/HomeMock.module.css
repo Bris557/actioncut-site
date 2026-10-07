@@ -1,0 +1,206 @@
+.root {
+  --chip-font: calc(var(--u) * 13);
+  position: absolute;
+  inset: 0;
+  background: var(--ac-cream);
+  color: var(--ac-ink);
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(var(--u) * 64);
+  margin-top: calc(var(--u) * 28);
+  padding: 0 calc(var(--u) * 16) 0 calc(var(--u) * 20);
+}
+
+.title {
+  font-size: calc(var(--u) * 24);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.actions {
+  display: flex;
+  gap: calc(var(--u) * 20);
+  color: var(--ac-ink-2);
+}
+
+.actions svg {
+  width: calc(var(--u) * 24);
+  height: calc(var(--u) * 24);
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--ac-outline-variant);
+}
+
+.tab {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(var(--u) * 48);
+  font-size: calc(var(--u) * 14);
+  font-weight: 600;
+  color: var(--ac-ink-2);
+}
+
+.tabOn {
+  color: var(--ac-primary);
+}
+
+.tabOn::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: calc(var(--u) * 64);
+  height: calc(var(--u) * 3);
+  margin-left: calc(var(--u) * -32);
+  border-radius: calc(var(--u) * 3) calc(var(--u) * 3) 0 0;
+  background: var(--ac-primary);
+}
+
+.list {
+  padding: calc(var(--u) * 4) calc(var(--u) * 16) 0;
+}
+
+.countRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(var(--u) * 52);
+  padding: 0 calc(var(--u) * 4);
+  font-size: calc(var(--u) * 14);
+  color: var(--ac-ink-2);
+}
+
+.newBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--u) * 6);
+  height: calc(var(--u) * 36);
+  padding: 0 calc(var(--u) * 14) 0 calc(var(--u) * 10);
+  border-radius: calc(var(--u) * 18);
+  background: var(--ac-secondary-container);
+  color: var(--ac-on-secondary-container);
+  font-size: calc(var(--u) * 14);
+  font-weight: 600;
+}
+
+.newBtn svg {
+  width: calc(var(--u) * 18);
+  height: calc(var(--u) * 18);
+}
+
+.newBtnHot {
+  animation: hot 1.6s ease-in-out infinite;
+}
+
+@keyframes hot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 122, 26, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 calc(var(--u) * 8) rgba(255, 122, 26, 0);
+  }
+}
+
+.month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(var(--u) * 44);
+  padding: 0 calc(var(--u) * 4);
+  font-size: calc(var(--u) * 14);
+  font-weight: 600;
+}
+
+.monthCount {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--u) * 6);
+  font-size: calc(var(--u) * 13);
+  font-weight: 400;
+  color: var(--ac-ink-2);
+}
+
+.monthCount svg {
+  width: calc(var(--u) * 20);
+  height: calc(var(--u) * 20);
+  transform: rotate(180deg);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 2);
+  padding-bottom: calc(var(--u) * 6);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 16);
+  min-height: calc(var(--u) * 80);
+  padding: calc(var(--u) * 12) calc(var(--u) * 16) calc(var(--u) * 12) calc(var(--u) * 12);
+  background: var(--ac-item);
+}
+
+.thumb {
+  position: relative;
+  flex: none;
+  width: calc(var(--u) * 56);
+  height: calc(var(--u) * 56);
+  border-radius: calc(var(--u) * 12);
+  overflow: hidden;
+}
+
+.rowText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 2);
+}
+
+.rowTitle {
+  font-size: calc(var(--u) * 16);
+  line-height: 1.5;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowSub {
+  font-size: calc(var(--u) * 14);
+  line-height: 1.43;
+  color: var(--ac-ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link {
+  font-size: calc(var(--u) * 14);
+  font-weight: 600;
+  color: var(--ac-primary);
+}
+
+.filters {
+  display: flex;
+  gap: calc(var(--u) * 8);
+  padding: 0 calc(var(--u) * 4) calc(var(--u) * 6);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: calc(var(--u) * 4);
+}

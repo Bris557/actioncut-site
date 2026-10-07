@@ -1,0 +1,160 @@
+.root {
+  --chip-font: calc(var(--u) * 14);
+  position: absolute;
+  inset: 0;
+  background: #0e0c0b;
+  color: #ffffff;
+}
+
+.viewfinder {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--u) * 70);
+  height: calc(var(--u) * 620);
+  overflow: hidden;
+}
+
+.rec {
+  position: absolute;
+  /* Below the frame's punch-hole camera, over the top of the viewfinder. */
+  top: calc(var(--u) * 84);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 6);
+  padding: calc(var(--u) * 4) calc(var(--u) * 10);
+  border-radius: calc(var(--u) * 12);
+  background: rgba(0, 0, 0, 0.5);
+  font-size: calc(var(--u) * 13);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.recDot {
+  width: calc(var(--u) * 8);
+  height: calc(var(--u) * 8);
+  border-radius: 50%;
+  background: #ff3b30;
+  animation: blink 1.2s steps(2, start) infinite;
+}
+
+.shutter {
+  position: absolute;
+  bottom: calc(var(--u) * 44);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--u) * 72);
+  height: calc(var(--u) * 72);
+  border: calc(var(--u) * 4) solid #ffffff;
+  border-radius: 50%;
+}
+
+.shutter span {
+  width: calc(var(--u) * 28);
+  height: calc(var(--u) * 28);
+  border-radius: calc(var(--u) * 6);
+  background: #ff3b30;
+}
+
+.button {
+  position: absolute;
+  right: calc(var(--u) * 16);
+  top: calc(var(--u) * 360);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--u) * 64);
+  height: calc(var(--u) * 64);
+  border-radius: calc(var(--u) * 20);
+  background: var(--ac-orange);
+  box-shadow: 0 calc(var(--u) * 6) calc(var(--u) * 14) rgba(0, 0, 0, 0.35);
+  transition: background-color 0.2s;
+  animation: breathe 2.4s ease-in-out infinite;
+}
+
+.hot {
+  background: #e5484d;
+  animation: pulse 0.5s ease-out infinite;
+}
+
+.crosshair {
+  width: calc(var(--u) * 34);
+  height: calc(var(--u) * 34);
+  color: #ffffff;
+}
+
+.badge {
+  position: absolute;
+  right: calc(var(--u) * -4);
+  top: calc(var(--u) * -4);
+  min-width: calc(var(--u) * 22);
+  height: calc(var(--u) * 22);
+  padding: 0 calc(var(--u) * 5);
+  border-radius: calc(var(--u) * 11);
+  background: var(--ac-brown);
+  color: var(--ac-on-brown);
+  font-size: calc(var(--u) * 12);
+  font-weight: 700;
+  line-height: calc(var(--u) * 22);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.chips {
+  position: absolute;
+  right: calc(var(--u) * 92);
+  top: calc(var(--u) * 300);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: calc(var(--u) * 6);
+  width: calc(var(--u) * 150);
+}
+
+.timer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: calc(var(--u) * 3);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.timer span {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  transform-origin: right center;
+  transition: transform 0.3s linear;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 72, 77, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 calc(var(--u) * 18) rgba(229, 72, 77, 0);
+  }
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}

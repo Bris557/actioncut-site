@@ -1,0 +1,123 @@
+.scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.rink {
+  --side: #3d6fd1;
+  --mid: #d8414a;
+  background: #e3eaef;
+}
+
+.pitch {
+  --side: rgba(255, 255, 255, 0.7);
+  --mid: #ffffff;
+  background: #5a9a47;
+}
+
+.gym {
+  --side: #8a5a2b;
+  --mid: #8a5a2b;
+  background: #d2a26a;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--side);
+}
+
+.l1 {
+  left: calc(24% + var(--shift));
+}
+
+.mid {
+  left: calc(50% + var(--shift));
+  margin-left: -1px;
+  background: var(--mid);
+}
+
+.l2 {
+  left: calc(76% + var(--shift));
+}
+
+.circle {
+  position: absolute;
+  left: calc(50% + var(--shift));
+  top: 50%;
+  width: 26%;
+  aspect-ratio: 1;
+  border: 2px solid var(--mid);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.horizontal .line {
+  left: 0;
+  right: 0;
+  width: auto;
+  height: 3px;
+  margin: 0;
+}
+
+.horizontal .l1 {
+  top: 30%;
+}
+
+.horizontal .mid {
+  top: 52%;
+}
+
+.horizontal .l2 {
+  top: 74%;
+}
+
+.horizontal .circle {
+  left: 50%;
+  top: 52%;
+  width: 34%;
+  border-width: 4px;
+}
+
+.player {
+  position: absolute;
+  width: 4.5%;
+  aspect-ratio: 1 / 2.1;
+  border-radius: 9999px;
+  background: #1f2a44;
+}
+
+.p1 {
+  left: 18%;
+  top: 58%;
+}
+
+.p2 {
+  left: 62%;
+  top: 42%;
+  background: #f2f2f2;
+  box-shadow: 0 0 0 2px #1f2a44;
+}
+
+.p3 {
+  left: 80%;
+  top: 63%;
+}
+
+.ball {
+  position: absolute;
+  left: 47%;
+  top: 61%;
+  width: 2.6%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #111111;
+}
+
+.pitch .ball {
+  background: #ffffff;
+  box-shadow: 0 0 0 1px #333333;
+}

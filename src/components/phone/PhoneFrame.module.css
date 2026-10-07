@@ -1,0 +1,55 @@
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 390 / 844;
+  padding: 3.4%;
+  border-radius: 14% / 6.5%;
+  background: #1e1612;
+  box-shadow:
+    0 40px 80px -30px rgba(94, 39, 0, 0.5),
+    0 18px 36px -18px rgba(37, 25, 18, 0.45),
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.08);
+}
+
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 11% / 5.1%;
+  background: var(--ac-cream);
+  container-type: inline-size;
+  isolation: isolate;
+}
+
+/* 1 --u = one pixel of a 390-px-wide app screen. */
+.content {
+  --u: calc(100cqw / 390);
+  position: absolute;
+  inset: 0;
+  font-family: var(--ac-font);
+  font-size: calc(var(--u) * 14);
+  line-height: 1.4;
+  color: var(--ac-ink);
+  text-align: left;
+  user-select: none;
+}
+
+.camera {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 4.6%;
+  width: 3.4%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #0b0807;
+}
+
+.iphone .camera {
+  top: 4.4%;
+  width: 28%;
+  aspect-ratio: 3.6;
+  border-radius: 9999px;
+}
