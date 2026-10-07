@@ -24,7 +24,9 @@
   transition: opacity 0.4s var(--ac-ease-out);
 }
 
-.stepOn {
+/* Two classes on purpose: cssnano merges rules with identical declarations across modules and can move
+   a one-class `.stepOn` above `.step` in the production bundle, where `.step`'s 0.32 would then win. */
+.step.stepOn {
   opacity: 1;
 }
 
