@@ -23,7 +23,7 @@ export const site: SiteInfo = {
   apkUrl: '/actioncut-latest.apk',
   minAndroid: 'Android 14 or newer',
   minIos: 'iOS 26 or newer',
-  contactEmail: null,
+  contactEmail: 'pigmentator@gmail.com',
   publisher: null,
   googlePlayUrl: null,
   appStoreUrl: null,

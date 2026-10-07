@@ -32,6 +32,5 @@ Put these in `static/img/screens/` and set `src` on the matching `<Screen>`:
 
 ## Before publishing
 
-- Set `contactEmail` and `publisher` in `src/data/site.ts`.
-- Replace `static/actioncut-latest.apk` with the current build (the changelog says 1.5.41).
+- Set `publisher` in `src/data/site.ts` (optional; shown in the Privacy Policy).
 - Have the Privacy Policy reviewed.
