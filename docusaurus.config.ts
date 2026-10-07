@@ -3,6 +3,9 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // Runs in Node.js — no browser APIs here.
 
+// Links to sections of the landing page (`/#…`) would otherwise count as active on every page.
+const NEVER_ACTIVE = '(?!)';
+
 const config: Config = {
   title: 'ActionCut',
   tagline: 'Tap. Tag. Done. Mark the best moments while you film.',
@@ -27,6 +30,12 @@ const config: Config = {
     {tagName: 'link', attributes: {rel: 'preconnect', href: 'https://fonts.googleapis.com'}},
     {tagName: 'link', attributes: {rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous'}},
     {tagName: 'meta', attributes: {name: 'theme-color', content: '#FFF8F6'}},
+    {tagName: 'link', attributes: {rel: 'icon', type: 'image/svg+xml', href: '/img/favicon.svg'}},
+    {
+      tagName: 'noscript',
+      attributes: {},
+      innerHTML: '<style>[data-reveal]{opacity:1!important;transform:none!important}</style>',
+    },
   ],
 
   stylesheets: [
@@ -63,11 +72,11 @@ const config: Config = {
       title: 'ActionCut',
       logo: {alt: 'ActionCut', src: 'img/logo.svg'},
       items: [
-        {to: '/#how-it-works', label: 'How it works', position: 'left'},
-        {to: '/#use-cases', label: 'Use cases', position: 'left'},
-        {to: '/#features', label: 'Features', position: 'left'},
-        {to: '/#iphone', label: 'iPhone', position: 'left'},
-        {to: '/#faq', label: 'FAQ', position: 'left'},
+        {to: '/#how-it-works', label: 'How it works', position: 'left', activeBaseRegex: NEVER_ACTIVE},
+        {to: '/#use-cases', label: 'Use cases', position: 'left', activeBaseRegex: NEVER_ACTIVE},
+        {to: '/#features', label: 'Features', position: 'left', activeBaseRegex: NEVER_ACTIVE},
+        {to: '/#iphone', label: 'iPhone', position: 'left', activeBaseRegex: NEVER_ACTIVE},
+        {to: '/#faq', label: 'FAQ', position: 'left', activeBaseRegex: NEVER_ACTIVE},
         {to: '/guide', label: 'Guide', position: 'left', activeBaseRegex: '^/guide'},
         {
           type: 'html',

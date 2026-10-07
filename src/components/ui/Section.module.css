@@ -1,0 +1,48 @@
+.sheet {
+  position: relative;
+  margin: 12px;
+  border-radius: var(--ac-radius-sheet);
+  overflow: clip;
+}
+
+.inner {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(56px, 8vw, 112px) clamp(20px, 5vw, 64px);
+}
+
+.cream {
+  background: var(--ac-cream);
+  color: var(--ac-ink);
+}
+
+.white {
+  background: var(--ac-item);
+  color: var(--ac-ink);
+}
+
+.orange {
+  --section-muted: var(--ac-on-orange);
+  background: var(--ac-orange);
+  color: var(--ac-on-orange);
+}
+
+.blue {
+  --section-muted: var(--ac-on-blue);
+  background: var(--ac-blue);
+  color: var(--ac-on-blue);
+}
+
+.brown {
+  --section-muted: var(--ac-on-brown-2);
+  background: var(--ac-brown);
+  color: var(--ac-on-brown);
+}
+
+@media (max-width: 600px) {
+  .sheet {
+    margin: 8px;
+    border-radius: var(--ac-radius-l);
+  }
+}

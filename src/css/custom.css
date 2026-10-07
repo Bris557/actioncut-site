@@ -169,3 +169,101 @@ p {
     transition-duration: 0.01ms !important;
   }
 }
+/* Navbar: floating pill (M3 floating toolbar). The blur lives on ::before so the
+   fixed mobile sidebar inside .navbar is not trapped by backdrop-filter.
+   The pill keeps a soft shadow at all times (simpler than the spec's shadow-on-scroll;
+   it reads the same over the cream hero). */
+.navbar {
+  top: 12px;
+  height: 64px;
+  margin: 12px 12px 0;
+  padding: 0 10px 0 18px;
+  border-radius: 9999px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.84);
+  -webkit-backdrop-filter: saturate(1.6) blur(16px);
+  backdrop-filter: saturate(1.6) blur(16px);
+  box-shadow:
+    0 1px 2px rgba(37, 25, 18, 0.06),
+    0 10px 30px rgba(156, 69, 0, 0.1);
+}
+
+.navbar__inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.navbar__brand {
+  margin-right: 20px;
+}
+
+.navbar__logo {
+  height: 36px;
+}
+
+.navbar__title {
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  font-variation-settings: 'ROND' 100;
+}
+
+.navbar__link {
+  padding: 8px 14px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ac-ink-2);
+  transition: background-color 0.2s;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--ac-ink);
+  background: var(--ac-container-high);
+}
+
+.ac-navbar-cta {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 9999px;
+  background: var(--ac-orange);
+  color: var(--ac-on-orange);
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-radius 0.35s var(--ac-ease-spring);
+}
+
+.ac-navbar-cta:hover {
+  color: var(--ac-on-orange);
+  text-decoration: none;
+  background: var(--ac-orange-hover);
+}
+
+.ac-navbar-cta:active {
+  border-radius: 14px;
+}
+
+/* --ifm-navbar-background-color is transparent for the pill; the drawer needs its own ground. */
+.navbar-sidebar {
+  background-color: var(--ac-surface);
+}
+
+.navbar-sidebar .ac-navbar-cta {
+  margin: 12px;
+}
+
+.navbar-sidebar__brand {
+  padding-left: 18px;
+}

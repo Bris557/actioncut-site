@@ -1,0 +1,17 @@
+.shape {
+  display: block;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin 48s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

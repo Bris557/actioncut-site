@@ -1,0 +1,39 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 18px 0 14px;
+  border-radius: 16px;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, currentColor 32%, transparent);
+}
+
+a.badge:hover {
+  color: inherit;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+.soon {
+  cursor: default;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.caption {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--section-muted, var(--ac-ink-2));
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 700;
+}
