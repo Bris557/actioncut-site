@@ -177,15 +177,6 @@
   box-shadow: inset 0 0 0 2px currentColor;
 }
 
-.versions > span {
-  position: relative;
-  width: 64px;
-  height: 84px;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6);
-}
-
 @media (max-width: 1100px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import {features, type Feature} from '@site/src/data/features';
 import {QUICK_TAGS} from '@site/src/data/tags';
 import Icon from '../brand/Icon';
-import Scene from '../phone/Scene';
 import {RevealGroup, RevealItem} from '../ui/Reveal';
 import Section from '../ui/Section';
 import TagChip from '../ui/TagChip';
@@ -42,17 +41,6 @@ function Visual({kind}: {kind: NonNullable<Feature['visual']>}) {
           ))}
           <span className={clsx(styles.swatch, styles.swatchCustom)}>
             <Icon name="plus" size={18} />
-          </span>
-        </div>
-      );
-    case 'versions':
-      return (
-        <div className={clsx(styles.visual, styles.versions)} aria-hidden="true">
-          <span>
-            <Scene kind="pitch" shift={-8} />
-          </span>
-          <span>
-            <Scene kind="pitch" shift={12} />
           </span>
         </div>
       );
