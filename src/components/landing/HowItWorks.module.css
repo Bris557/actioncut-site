@@ -1,0 +1,146 @@
+.head {
+  max-width: 760px;
+  margin-bottom: clamp(24px, 4vw, 48px);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 96px);
+}
+
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 72vh;
+  opacity: 0.32;
+  transition: opacity 0.4s var(--ac-ease-out);
+}
+
+.stepOn {
+  opacity: 1;
+}
+
+.num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 18px;
+  border-radius: 16px;
+  background: var(--ac-secondary-container);
+  color: var(--ac-on-secondary-container);
+  font-size: 20px;
+  font-weight: 800;
+  transition:
+    border-radius 0.5s var(--ac-ease-spring),
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.stepOn .num {
+  border-radius: 24px;
+  background: var(--ac-orange);
+  color: var(--ac-on-orange);
+}
+
+.stepTitle {
+  margin: 0 0 12px;
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1.05;
+  font-weight: 720;
+}
+
+.stepBody {
+  max-width: 30rem;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ac-ink-2);
+}
+
+.inlinePhone {
+  display: none;
+}
+
+.stickyCol {
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+  top: max(96px, calc(50vh - 330px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.shape {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 460px;
+  transform: translate(-50%, -50%);
+}
+
+.phone {
+  position: relative;
+  width: 300px;
+}
+
+.screenLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.dots {
+  position: relative;
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--ac-outline-variant);
+  transition:
+    width 0.4s var(--ac-ease-spring),
+    background-color 0.3s;
+}
+
+.dotOn {
+  width: 28px;
+  background: var(--ac-primary);
+}
+
+@media (max-width: 996px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .stickyCol {
+    display: none;
+  }
+
+  .step {
+    min-height: 0;
+    padding: 32px 0;
+    opacity: 1;
+  }
+
+  .inlinePhone {
+    display: block;
+    width: min(280px, 76vw);
+    margin: 28px auto 0;
+  }
+}
