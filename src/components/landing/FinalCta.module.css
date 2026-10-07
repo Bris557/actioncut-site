@@ -1,0 +1,85 @@
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.inner :global(.ac-lead) {
+  margin: 0 auto;
+}
+
+.title {
+  position: relative;
+  margin: 0 0 18px;
+  font-size: clamp(48px, 8vw, 112px);
+  line-height: 0.95;
+  font-weight: 780;
+  letter-spacing: -0.035em;
+  color: inherit;
+}
+
+.ctas {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 18px;
+  margin-top: 32px;
+}
+
+.meta {
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.badges {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.floaters {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floater {
+  position: absolute;
+  color: var(--ac-on-orange);
+  opacity: 0.16;
+  animation: drift calc(9s + var(--i) * 1.3s) ease-in-out calc(var(--i) * -1.7s) infinite alternate;
+}
+
+.floater svg {
+  width: 100%;
+  height: 100%;
+}
+
+.floater:nth-child(1) { left: 4%; top: 12%; width: 72px; height: 72px; }
+.floater:nth-child(2) { left: 84%; top: 8%; width: 110px; height: 110px; }
+.floater:nth-child(3) { left: 12%; top: 70%; width: 54px; height: 54px; }
+.floater:nth-child(4) { left: 72%; top: 66%; width: 64px; height: 64px; }
+.floater:nth-child(5) { left: 44%; top: 4%; width: 40px; height: 40px; }
+.floater:nth-child(6) { left: 92%; top: 82%; width: 46px; height: 46px; }
+
+@keyframes drift {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(18px, -26px) rotate(40deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .floater:nth-child(2) {
+    left: 72%;
+  }
+}

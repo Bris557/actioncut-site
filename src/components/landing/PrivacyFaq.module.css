@@ -1,0 +1,141 @@
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: clamp(32px, 5vw, 72px);
+}
+
+.privacy {
+  position: sticky;
+  top: 110px;
+}
+
+.card {
+  padding: 28px;
+  border-radius: 40px 12px 40px 40px;
+  background: var(--ac-brown);
+  color: var(--ac-on-brown);
+}
+
+.lock {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 17px;
+  background: var(--ac-orange);
+  color: var(--ac-on-orange);
+}
+
+.cardTitle {
+  margin: 18px 0 10px;
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 720;
+  color: inherit;
+}
+
+.cardBody {
+  margin: 0 0 18px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ac-on-brown-2);
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--ac-inverse-primary);
+}
+
+.cardLink:hover {
+  color: #ffffff;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  interpolate-size: allow-keywords;
+}
+
+.item {
+  border-radius: 6px;
+  background: var(--ac-item);
+}
+
+.item:first-child {
+  border-radius: 20px 20px 6px 6px;
+}
+
+.item:last-child {
+  border-radius: 6px 6px 20px 20px;
+}
+
+.item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  font-size: 18px;
+  font-weight: 650;
+  list-style: none;
+  cursor: pointer;
+}
+
+.item summary::-webkit-details-marker {
+  display: none;
+}
+
+.chev {
+  flex: none;
+  color: var(--ac-primary);
+  transition: transform 0.35s var(--ac-ease-spring);
+}
+
+.item[open] .chev {
+  transform: rotate(180deg);
+}
+
+.item::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition: block-size 0.35s var(--ac-ease-out);
+}
+
+.item[open]::details-content {
+  block-size: auto;
+}
+
+.answer {
+  padding: 0 20px 20px;
+  font-size: 16.5px;
+  line-height: 1.55;
+  color: var(--ac-ink-2);
+}
+
+.answer p {
+  margin: 0;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+@media (max-width: 996px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy {
+    position: static;
+  }
+}
