@@ -2,12 +2,10 @@ import clsx from 'clsx';
 import {AnimatePresence, motion, useInView} from 'motion/react';
 import {useEffect, useRef, useState} from 'react';
 import {steps, type Step, type StepScreen} from '@site/src/data/steps';
-import {QUICK_TAGS} from '@site/src/data/tags';
 import Shape from '../brand/Shapes';
-import CameraOverlayMock from '../phone/CameraOverlayMock';
-import EventMock from '../phone/EventMock';
-import HomeMock from '../phone/HomeMock';
+import CameraStill from '../phone/CameraStill';
 import PhoneFrame from '../phone/PhoneFrame';
+import Shot from '../phone/Shot';
 import {RevealGroup, RevealItem} from '../ui/Reveal';
 import Section from '../ui/Section';
 import styles from './HowItWorks.module.css';
@@ -15,23 +13,19 @@ import styles from './HowItWorks.module.css';
 function StepMock({screen}: {screen: StepScreen}) {
   switch (screen) {
     case 'home':
-      return <HomeMock highlightNew />;
-    case 'camera':
-      return <CameraOverlayMock count={0} recTime="00:12" scene="pitch" />;
-    case 'tags':
       return (
-        <CameraOverlayMock
-          count={3}
-          recTime="23:41"
-          scene="pitch"
-          hot
-          chipsVisible
-          countdown={0.6}
-          chips={QUICK_TAGS.map((t) => ({...t, on: t.name === 'Goal'}))}
-        />
+        <>
+          <Shot src="/img/screens/home.webp" />
+          {/* Over the New event button of the screenshot. */}
+          <span className={styles.hotspot} style={{left: '81%', top: '20.3%'}} />
+        </>
       );
+    case 'camera':
+      return <CameraStill step="button" />;
+    case 'tags':
+      return <CameraStill step="tags" />;
     case 'event':
-      return <EventMock />;
+      return <Shot src="/img/screens/event.webp" />;
   }
 }
 

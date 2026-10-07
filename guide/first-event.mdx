@@ -12,8 +12,8 @@ An **event** is one game or practice. Everything you mark during it — and ever
 3. An orange button with a crosshair appears on your screen. It stays on top of every app until you stop the event.
 
 <div className="ac-screens">
-  <Screen name="Home — New event" caption="Home, with the New event button" />
-  <Screen name="Floating button over the camera" caption="The floating button over your camera app" />
+  <Screen name="Home — New event" caption="Home, with the New event button" src="/img/screens/home.webp" />
+  <Screen name="Floating button over the camera" caption="The floating button over your camera app" fallback={<CameraStill step="button" />} />
 </div>
 
 :::tip Open the camera automatically
@@ -33,7 +33,7 @@ You can stop and start recording as often as you like. ActionCut matches each mo
 
 Back in ActionCut, a dark bar at the bottom shows **Event in progress**, the time since the start and how many moments you’ve marked. From there you can open the camera or tap **Stop**.
 
-<Screen name="Live bar" caption="The live bar while an event is in progress" />
+<Screen name="Live bar" caption="The live bar while an event is in progress" src="/img/screens/live-bar.webp" />
 
 ## After the final whistle
 

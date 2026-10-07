@@ -1,0 +1,160 @@
+.gallery {
+  --shift-ease: var(--ac-ease-out);
+  transition:
+    background-color 0.6s var(--shift-ease),
+    color 0.6s var(--shift-ease);
+}
+
+.gallery :global(.ac-eyebrow),
+.gallery :global(.ac-lead) {
+  transition: color 0.6s var(--shift-ease);
+}
+
+/* The app's dark theme, sampled from its screenshots. */
+.gallery.dark {
+  --ac-primary: #ffb68e;
+  --ac-ink-2: #d8c2b8;
+  --ac-outline: #a08d84;
+  background-color: #1c110c;
+  color: #f4ded4;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 48px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.copy {
+  max-width: 720px;
+}
+
+.toggle {
+  display: inline-flex;
+  flex: none;
+  padding: 0;
+  border: 1px solid var(--ac-outline);
+  border-radius: 9999px;
+  overflow: hidden;
+  transition: border-color 0.6s var(--shift-ease);
+}
+
+.segment {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 112px;
+  height: 48px;
+  padding: 0 20px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.segment + .segment {
+  border-left: 1px solid var(--ac-outline);
+}
+
+.segment:hover {
+  background: rgba(156, 69, 0, 0.08);
+}
+
+.segment:focus-visible {
+  outline: 3px solid var(--ac-orange);
+  outline-offset: -3px;
+}
+
+.segmentOn,
+.segmentOn:hover {
+  background: #ffdbca;
+  color: #331200;
+}
+
+.dark .segmentOn,
+.dark .segmentOn:hover {
+  background: #6e3a1d;
+  color: #ffdbca;
+}
+
+/* Bleeds into the sheet's side padding; the edges fade out. */
+.viewport {
+  --gutter: clamp(20px, 5vw, 64px);
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 8px var(--gutter) 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--gutter), #000 calc(100% - var(--gutter)), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 var(--gutter), #000 calc(100% - var(--gutter)), transparent);
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.linked {
+  overflow-x: clip;
+}
+
+.track {
+  display: flex;
+  gap: clamp(18px, 2.4vw, 32px);
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: clamp(168px, 17vw, 240px);
+}
+
+.item:nth-child(even) {
+  margin-top: clamp(24px, 4vw, 56px);
+}
+
+.phone {
+  width: 100%;
+}
+
+.darkShot {
+  opacity: 0;
+  transition: opacity 0.5s var(--shift-ease);
+  transition-delay: calc(var(--i) * 45ms);
+}
+
+.dark .darkShot {
+  opacity: 1;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: 650;
+  text-align: center;
+  color: var(--ac-ink-2);
+  transition: color 0.6s var(--shift-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linked {
+    overflow-x: auto;
+  }
+
+  .track {
+    transform: none !important;
+  }
+}

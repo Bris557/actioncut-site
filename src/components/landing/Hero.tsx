@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import {useReducedMotion} from 'motion/react';
 import {useEffect, useState} from 'react';
+import {CAMERA_PHOTOS} from '@site/src/data/camera';
 import {site} from '@site/src/data/site';
 import {QUICK_TAGS} from '@site/src/data/tags';
 import {formatClock, heroFrame} from '@site/src/lib/heroLoop';
@@ -82,6 +83,8 @@ export default function Hero() {
         <div className={styles.phoneWrap}>
           <PhoneFrame label="ActionCut’s floating button over the camera app, with the quick tags Goal, Save and Assist">
             <CameraOverlayMock
+              photo={CAMERA_PHOTOS.wide}
+              eager
               count={frame.count}
               recTime={formatClock(frame.recSeconds)}
               hot={frame.hot}

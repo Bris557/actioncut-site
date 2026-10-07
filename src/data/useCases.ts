@@ -1,13 +1,11 @@
-export type UseCaseMock = 'event' | 'home' | 'moment' | 'versions' | 'favorites';
-
 export type UseCase = {
   id: string;
   label: string;
   title: string;
   intro: string;
   steps: string[];
-  /** Set `src` when the real screenshot exists in static/img/screens/. */
-  screen: {name: string; src?: string; mock: UseCaseMock};
+  /** A screenshot under static/img/screens/; without one, a drawn moment with two versions. */
+  screen: {name: string; src?: string};
 };
 
 export const useCases: UseCase[] = [
@@ -22,7 +20,7 @@ export const useCases: UseCase[] = [
       'Tap at the goal, the save, the celebration — and tag it Goal right there.',
       'After the game, open the event: ActionCut cuts every moment into a clip, ready for the family chat.',
     ],
-    screen: {name: 'Event screen', mock: 'event'},
+    screen: {name: 'Event screen', src: '/img/screens/event.webp'},
   },
   {
     id: 'practice',
@@ -35,7 +33,7 @@ export const useCases: UseCase[] = [
       'Tag reps with Skill to collect the technique to work on.',
       'Page through the moments one by one with the arrows on the moment screen.',
     ],
-    screen: {name: 'Moment screen', mock: 'moment'},
+    screen: {name: 'Moment screen', src: '/img/screens/moment.webp'},
   },
   {
     id: 'tournament',
@@ -48,7 +46,7 @@ export const useCases: UseCase[] = [
       'Live in the wrong event? Open the right one and tap Switch here.',
       'Marked a moment in the wrong game? Move it to the right event later.',
     ],
-    screen: {name: 'Home screen', mock: 'home'},
+    screen: {name: 'Home with an event in progress', src: '/img/screens/home-live.webp'},
   },
   {
     id: 'angles',
@@ -61,7 +59,7 @@ export const useCases: UseCase[] = [
       'Open the event’s Sources and tap Scan this phone — ActionCut finds them by recording time.',
       'Every moment both videos cover gets two versions. Swipe between them.',
     ],
-    screen: {name: 'Moment with two versions', mock: 'versions'},
+    screen: {name: 'Moment with two versions'},
   },
   {
     id: 'season',
@@ -74,6 +72,6 @@ export const useCases: UseCase[] = [
       'Filter by Goal, tap Select all, then Save.',
       'Every clip lands in your gallery’s ActionCut album, ready for the season video.',
     ],
-    screen: {name: 'Favorites', mock: 'favorites'},
+    screen: {name: 'Saving favorites to the gallery', src: '/img/screens/favorites-save.webp'},
   },
 ];

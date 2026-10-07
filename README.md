@@ -9,26 +9,21 @@ npm test           # unit tests
 npm run build      # static site in build/
 ```
 
-## Screenshots to add
+## Screenshots
 
-Put these in `static/img/screens/` and set `src` on the matching `<Screen>`:
+Real app screenshots live in `static/img/screens/` as WebP, 720 px wide (`name.webp` is the light theme, `name-dark.webp` the dark one). Convert a phone screenshot with:
 
-| File | Where | Shows |
-|---|---|---|
-| `home-new-event.png` | guide/first-event | Home with the New event button |
-| `camera-button.png` | guide/first-event | Camera app with the floating button |
-| `live-bar.png` | guide/first-event | Home with "Event in progress" |
-| `quick-tags.png` | guide/floating-button | Quick tags beside the button |
-| `settings-button.png` | guide/floating-button | Settings → Floating button |
-| `event.png` | guide/reviewing-moments, use case "Match day" | Event screen grid |
-| `moment.png` | guide/reviewing-moments, use case "Practice" | Moment screen |
-| `moment-versions.png` | use case "Two phones" | Moment with Version 1 of 2 |
-| `home-live.png` | use case "Tournament day" | Home with a live event |
-| `clip-length.png` | guide/clip-length | Clip length sheet |
-| `edit-clip.png` | guide/clip-length | Edit clip |
-| `tags-settings.png` | guide/tags-and-favorites | Tags settings |
-| `favorites.png` | guide/tags-and-favorites, use case "Season highlights" | Favorites with a tag filter |
-| `sources.png` | guide/other-cameras | Sources |
+```bash
+magick Screenshot.jpg -resize 720x -strip -quality 80 -define webp:method=6 static/img/screens/<name>.webp
+```
+
+- **Landing:** How it works (`src/components/landing/HowItWorks.tsx`), use cases (`screen.src` in `src/data/useCases.ts`) and the light/dark gallery (`src/data/gallery.ts` — every entry needs both files).
+- **Guide:** `src="/img/screens/<name>.webp"` on a `<Screen>` in `guide/*.mdx`.
+- **Camera app:** the camera can’t be screenshotted while recording, so it is drawn (`src/components/phone/CameraOverlayMock.tsx`, after a real camera screenshot) over real frames from a game in `static/img/camera/`. In MDX: `<Screen fallback={<CameraStill step="button" />} />` (or `step="tags"`).
+
+`npm test` checks that every referenced screenshot exists and that no `<Screen>` in the guide is left as a placeholder.
+
+Still missing: a moment with two versions (*Version 1 of 2*) for the “Two phones” use case — until then it shows a drawn screen.
 
 ## Before publishing
 

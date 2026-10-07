@@ -1,30 +1,13 @@
 import clsx from 'clsx';
 import {LayoutGroup, motion} from 'motion/react';
 import {useRef, useState, type KeyboardEvent} from 'react';
-import {useCases, type UseCaseMock} from '@site/src/data/useCases';
+import {useCases} from '@site/src/data/useCases';
 import Shape from '../brand/Shapes';
-import EventMock from '../phone/EventMock';
-import HomeMock from '../phone/HomeMock';
 import MomentMock from '../phone/MomentMock';
 import Screen from '../phone/Screen';
 import {RevealGroup, RevealItem} from '../ui/Reveal';
 import Section from '../ui/Section';
 import styles from './UseCases.module.css';
-
-function Mock({kind}: {kind: UseCaseMock}) {
-  switch (kind) {
-    case 'event':
-      return <EventMock />;
-    case 'home':
-      return <HomeMock live liveTime="31:08" liveCount={4} />;
-    case 'moment':
-      return <MomentMock />;
-    case 'versions':
-      return <MomentMock versions />;
-    case 'favorites':
-      return <HomeMock tab="favorites" />;
-  }
-}
 
 export default function UseCases() {
   const [selected, setSelected] = useState(0);
@@ -117,7 +100,7 @@ export default function UseCases() {
             <div className={styles.visual}>
               <Shape kind="cookie9" color="var(--ac-cream)" className={styles.shape} />
               <div className={styles.phone}>
-                <Screen name={uc.screen.name} src={uc.screen.src} fallback={<Mock kind={uc.screen.mock} />} />
+                <Screen name={uc.screen.name} src={uc.screen.src} fallback={<MomentMock versions />} />
               </div>
             </div>
           </motion.div>

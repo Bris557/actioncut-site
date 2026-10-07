@@ -19,7 +19,7 @@ Docusaurus 3.8.1 (TypeScript, React 19) at the **repository root** — there is 
 - `src/pages/index.tsx` — landing page, composed of `src/components/landing/*` (one file per section)
 - `src/data/*` — all landing copy, tags, changelog, site constants (`site.ts`: APK path, contact, store links)
 - `src/lib/*` — pure logic with tests: demo gesture rules, hero loop, changelog, shapes
-- `src/components/phone/*` — phone frame and HTML recreations of the app screens; sizes in `calc(var(--u) * N)`, 1 `--u` = 1 px of a 390-px screen
+- `src/components/phone/*` — phone frame, `Shot` (a screenshot inside it), the drawn camera app with ActionCut's overlay, the drawn moment with versions; sizes in `calc(var(--u) * N)`, 1 `--u` = 1 px of a 390-px screen
 - `src/components/ui/*`, `src/components/brand/*` — buttons, chips, sections, reveal, icons, logo, M3 shapes
 - `guide/*.mdx` — the Guide, served at `/guide`; `<Screen>` works in MDX without import
 - `src/pages/changelog.tsx`, `src/pages/privacy.mdx` — Changelog and Privacy Policy
@@ -41,4 +41,4 @@ Docusaurus 3.8.1 (TypeScript, React 19) at the **repository root** — there is 
 
 ## Screenshots
 
-Put PNGs (up to 1080 px wide) in `static/img/screens/` and pass `src="/img/screens/<file>.png"` to the matching `<Screen>` in `guide/*.mdx`, or set `screen.src` in `src/data/useCases.ts`. The list of expected files is in README.md.
+Real screenshots are WebP, 720 px wide, in `static/img/screens/` (`<name>.webp` light, `<name>-dark.webp` dark). Pass `src="/img/screens/<name>.webp"` to a `<Screen>` in `guide/*.mdx`, set `screen.src` in `src/data/useCases.ts`, or add a light/dark pair to `src/data/gallery.ts`. The camera app is drawn (`CameraOverlayMock`, `CameraStill`) over real frames in `static/img/camera/`. `npm test` fails on a missing file or a guide `<Screen>` without `src`/`fallback`. Details and the conversion command are in README.md.

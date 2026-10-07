@@ -9,14 +9,26 @@
 .wallpaper {
   position: absolute;
   inset: 0;
-  opacity: 0.55;
 }
 
+.wallpaper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Keeps the white clock readable over the bright ice and boards. */
 .wallpaper::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(20, 12, 8, 0.45);
+  background: linear-gradient(
+    rgba(10, 6, 4, 0.62),
+    rgba(10, 6, 4, 0.3) 34%,
+    rgba(10, 6, 4, 0.08) 55%,
+    rgba(10, 6, 4, 0.35)
+  );
 }
 
 .date {

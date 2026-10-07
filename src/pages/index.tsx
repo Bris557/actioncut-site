@@ -5,6 +5,7 @@ import ButtonDemo from '@site/src/components/landing/ButtonDemo';
 import Features from '@site/src/components/landing/Features';
 import FinalCta from '@site/src/components/landing/FinalCta';
 import FreeLater from '@site/src/components/landing/FreeLater';
+import Gallery from '@site/src/components/landing/Gallery';
 import Hero from '@site/src/components/landing/Hero';
 import HowItWorks from '@site/src/components/landing/HowItWorks';
 import IphoneSoon from '@site/src/components/landing/IphoneSoon';
@@ -23,6 +24,7 @@ export default function Home() {
         <ButtonDemo />
         <UseCases />
         <Features />
+        <Gallery />
         <Benefits />
         <IphoneSoon />
         <FreeLater />

@@ -144,3 +144,34 @@
     margin: 28px auto 0;
   }
 }
+
+/* A soft pulse over the screenshot's New event button. */
+.hotspot {
+  position: absolute;
+  width: calc(var(--u) * 128);
+  height: calc(var(--u) * 46);
+  transform: translate(-50%, -50%);
+  border: calc(var(--u) * 3) solid var(--ac-orange);
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: hotspot 1.8s var(--ac-ease-out) infinite;
+}
+
+@keyframes hotspot {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hotspot {
+    animation: none !important;
+    opacity: 0.85;
+  }
+}

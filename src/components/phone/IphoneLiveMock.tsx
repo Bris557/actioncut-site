@@ -1,16 +1,18 @@
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import clsx from 'clsx';
+import {CAMERA_PHOTOS} from '@site/src/data/camera';
 import {QUICK_TAGS} from '@site/src/data/tags';
 import Icon from '../brand/Icon';
 import TagChip from '../ui/TagChip';
-import Scene from './Scene';
 import styles from './IphoneLiveMock.module.css';
 
 /** Concept of the iOS Live Activity "Event in progress" (iOS spec D13). */
 export default function IphoneLiveMock() {
+  const wallpaper = useBaseUrl(CAMERA_PHOTOS.lockScreen);
   return (
     <div className={styles.root}>
       <div className={styles.wallpaper}>
-        <Scene kind="pitch" orientation="horizontal" players />
+        <img src={wallpaper} alt="" loading="lazy" decoding="async" draggable={false} />
       </div>
       <div className={styles.date}>Saturday, October 10</div>
       <div className={styles.clock}>10:24</div>
