@@ -1,4 +1,5 @@
 import Layout from '@theme/Layout';
+import ButtonDemo from '@site/src/components/landing/ButtonDemo';
 import Hero from '@site/src/components/landing/Hero';
 import HowItWorks from '@site/src/components/landing/HowItWorks';
 import Problem from '@site/src/components/landing/Problem';
@@ -11,6 +12,7 @@ export default function Home() {
         <Hero />
         <Problem />
         <HowItWorks />
+        <ButtonDemo />
       </main>
     </Layout>
   );
