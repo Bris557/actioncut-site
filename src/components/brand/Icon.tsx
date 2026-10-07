@@ -4,7 +4,7 @@ export type IconName =
   | 'crosshair' | 'tag' | 'scissors' | 'timer' | 'layers' | 'heart' | 'scan' | 'download'
   | 'share' | 'palette' | 'fileUp' | 'sunMoon' | 'video' | 'smartphone' | 'check' | 'play'
   | 'stop' | 'chevronLeft' | 'chevronRight' | 'chevronDown' | 'plus' | 'help' | 'settings'
-  | 'more' | 'pencil' | 'arrowLeft' | 'arrowRight' | 'lock' | 'cloud' | 'user' | 'zap'
+  | 'more' | 'pencil' | 'arrowLeft' | 'arrowRight' | 'lock' | 'cloud' | 'users' | 'chart' | 'zap'
   | 'interval' | 'swap' | 'mail';
 
 const PATHS: Record<IconName, ReactNode> = {
@@ -160,10 +160,20 @@ const PATHS: Record<IconName, ReactNode> = {
     </>
   ),
   cloud: <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />,
-  user: (
+  users: (
     <>
-      <circle cx="12" cy="8" r="5" />
-      <path d="M20 21a8 8 0 0 0-16 0" />
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </>
+  ),
+  chart: (
+    <>
+      <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+      <path d="M18 17V9" />
+      <path d="M13 17V5" />
+      <path d="M8 17v-3" />
     </>
   ),
   zap: (

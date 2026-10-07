@@ -13,7 +13,7 @@ export const useCases: UseCase[] = [
     id: 'match',
     label: 'Match day',
     title: 'Your kid’s match, minus the scrubbing',
-    intro: 'The everyday game: one phone, your usual camera app, ninety minutes.',
+    intro: 'The everyday game: one phone, your usual camera app, sixty minutes.',
     steps: [
       'Start an event before kick-off — the crosshair button appears over your camera.',
       'Film from the stands the way you always do.',

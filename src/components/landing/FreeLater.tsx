@@ -28,8 +28,12 @@ export default function FreeLater() {
               Cloud storage for your clips
             </li>
             <li>
-              <Icon name="user" size={20} />
-              Athlete profiles
+              <Icon name="users" size={20} />
+              Family access to your highlights library
+            </li>
+            <li>
+              <Icon name="chart" size={20} />
+              Game analytics
             </li>
           </ul>
         </RevealItem>

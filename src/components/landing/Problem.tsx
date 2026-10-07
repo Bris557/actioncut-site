@@ -24,7 +24,7 @@ export default function Problem() {
       <RevealGroup className={styles.head}>
         <RevealItem>
           <h2 id="problem-title" className="ac-h2">
-            A 90-minute game.
+            A 60-minute game.
             <br />
             Five moments you’ll actually rewatch.
           </h2>
