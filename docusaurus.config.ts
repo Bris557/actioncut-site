@@ -1,10 +1,31 @@
-import type {Config} from '@docusaurus/types';
+import type {Config, Plugin} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // Runs in Node.js — no browser APIs here.
 
 // Links to sections of the landing page (`/#…`) would otherwise count as active on every page.
 const NEVER_ACTIVE = '(?!)';
+
+/**
+ * Docusaurus minifies CSS with cssnano (advanced preset) plus clean-css restructuring. Both merge rules
+ * with the same declarations across CSS modules, which can move a one-class modifier (`.on`, `.stepOn`)
+ * above its base rule — so the base wins in production only (the hero videos stayed invisible). This
+ * swaps in cssnano's default preset without `mergeRules`; everything else is still minified.
+ */
+function orderSafeCssMinifier(): Plugin {
+  return {
+    name: 'order-safe-css-minifier',
+    configureWebpack(webpackConfig, isServer) {
+      const minimizers = webpackConfig.optimization?.minimizer;
+      if (isServer || !Array.isArray(minimizers)) return {};
+      const i = minimizers.findIndex((m) => m?.constructor?.name === 'CssMinimizerPlugin');
+      if (i === -1) return {};
+      const CssMinimizer = minimizers[i].constructor as new (options: object) => (typeof minimizers)[number];
+      minimizers[i] = new CssMinimizer({minimizerOptions: {preset: ['default', {mergeRules: false}]}});
+      return {};
+    },
+  };
+}
 
 const config: Config = {
   title: 'ActionCut',
@@ -41,6 +62,8 @@ const config: Config = {
   stylesheets: [
     'https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wdth,wght,ROND@6..144,25..151,100..1000,0..100&family=Onest:wght@400..700&display=swap',
   ],
+
+  plugins: [orderSafeCssMinifier],
 
   presets: [
     [

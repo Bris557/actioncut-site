@@ -32,6 +32,7 @@ Docusaurus 3.8.1 (TypeScript, React 19) at the **repository root** — there is 
 - Copy is English and must match what the Android app does (`/Volumes/devssd/dev/actioncut-app`). No merging clips into one video, no "zero data collection".
 - The site has no public APK link: CTAs lead to the beta section (`/#beta`, a mailto to `site.contactEmail`). Testers get the direct link `/actioncut-latest.apk` by email.
 - No `Date.now()`/`window` during render; respect reduced motion (see the spec).
+- CSS is minified by `orderSafeCssMinifier` in `docusaurus.config.ts` (cssnano without `mergeRules`). Docusaurus' default merged rules across modules and moved one-class modifiers above their base in production only (invisible hero videos, faded How it works steps). Keep it, and still write a modifier that overrides its base as a two-class selector (`.video.on`).
 - Spec: `docs/superpowers/specs/2026-10-07-site-redesign-design.md`.
 
 ## Releasing a new app version

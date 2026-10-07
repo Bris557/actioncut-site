@@ -9,6 +9,7 @@
   pointer-events: none;
 }
 
-.on {
+/* Two classes so it beats `.video` whatever order the minified bundle ends up in. */
+.video.on {
   opacity: 1;
 }
