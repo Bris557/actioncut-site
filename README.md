@@ -19,7 +19,7 @@ magick Screenshot.jpg -resize 720x -strip -quality 80 -define webp:method=6 stat
 
 - **Landing:** How it works (`src/components/landing/HowItWorks.tsx`), use cases (`screen.src` in `src/data/useCases.ts`) and the light/dark gallery (`src/data/gallery.ts` — every entry needs both files).
 - **Guide:** `src="/img/screens/<name>.webp"` on a `<Screen>` in `guide/*.mdx`.
-- **Camera app:** the camera can’t be screenshotted while recording, so it is drawn (`src/components/phone/CameraOverlayMock.tsx`, after a real camera screenshot) over real frames from a game in `static/img/camera/`. In MDX: `<Screen fallback={<CameraStill step="button" />} />` (or `step="tags"`).
+- **Camera app:** the camera can’t be screenshotted while recording, so it is drawn (`src/components/phone/CameraOverlayMock.tsx`, after a real camera screenshot) over real frames from a game in `static/img/camera/`. In MDX: `<Screen fallback={<CameraStill step="button" frame="scrum" />} />` (or `step="tags"`); `frame` is a key of `CAMERA_PHOTOS` in `src/data/camera.ts`, and each frame is used only once.
 
 `npm test` checks that every referenced screenshot exists and that no `<Screen>` in the guide is left as a placeholder.
 

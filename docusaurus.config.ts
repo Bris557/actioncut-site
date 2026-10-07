@@ -76,7 +76,6 @@ const config: Config = {
         {to: '/#how-it-works', label: 'How it works', position: 'left', activeBaseRegex: NEVER_ACTIVE},
         {to: '/#use-cases', label: 'Use cases', position: 'left', activeBaseRegex: NEVER_ACTIVE},
         {to: '/#features', label: 'Features', position: 'left', activeBaseRegex: NEVER_ACTIVE},
-        {to: '/#iphone', label: 'iPhone', position: 'left', activeBaseRegex: NEVER_ACTIVE},
         {to: '/#faq', label: 'FAQ', position: 'left', activeBaseRegex: NEVER_ACTIVE},
         {to: '/guide', label: 'Guide', position: 'left', activeBaseRegex: '^/guide'},
         {

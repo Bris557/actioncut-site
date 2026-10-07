@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import {site} from '@site/src/data/site';
 import Icon from '../brand/Icon';
 import styles from './StoreBadge.module.css';
 
@@ -21,5 +22,15 @@ export default function StoreBadge({label, caption = 'Coming soon', href}: Props
     </a>
   ) : (
     <span className={clsx(styles.badge, styles.soon)}>{body}</span>
+  );
+}
+
+/** ActionCut is coming to both stores: Google Play for Android, the App Store for iPhone. */
+export function StoreBadges() {
+  return (
+    <>
+      <StoreBadge label="Google Play" href={site.googlePlayUrl} />
+      <StoreBadge label="App Store" href={site.appStoreUrl} />
+    </>
   );
 }

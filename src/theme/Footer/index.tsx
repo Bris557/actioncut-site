@@ -10,7 +10,7 @@ const COLUMNS: {title: string; links: {label: string; to: string}[]}[] = [
       {label: 'How it works', to: '/#how-it-works'},
       {label: 'Use cases', to: '/#use-cases'},
       {label: 'Features', to: '/#features'},
-      {label: 'iPhone', to: '/#iphone'},
+      {label: 'Inside the app', to: '/#screens'},
     ],
   },
   {

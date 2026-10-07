@@ -2,6 +2,7 @@ import {existsSync, readdirSync, readFileSync} from 'node:fs';
 import {join} from 'node:path';
 import {describe, expect, it} from 'vitest';
 import {CAMERA_PHOTOS} from './camera';
+import {CLIP_TILES} from './clips';
 import {gallery} from './gallery';
 import {useCases} from './useCases';
 
@@ -34,8 +35,28 @@ describe('screenshots', () => {
     }
   });
 
+  it('every clip tile exists', () => {
+    expect(CLIP_TILES).toHaveLength(5);
+    for (const tile of CLIP_TILES) expect(inStatic(tile.src), tile.src).toBe(true);
+  });
+
   it('every camera photo exists', () => {
     for (const photo of Object.values(CAMERA_PHOTOS)) expect(inStatic(photo), photo).toBe(true);
+  });
+
+  it('every camera photo is used exactly once across the site', () => {
+    const files = [
+      ...readdirSync(join(root, 'src'), {recursive: true, encoding: 'utf8'})
+        .filter((f) => f.endsWith('.tsx'))
+        .map((f) => join(root, 'src', f)),
+      ...readdirSync(join(root, 'guide'))
+        .filter((f) => f.endsWith('.mdx'))
+        .map((f) => join(root, 'guide', f)),
+    ];
+    const uses = files.flatMap((f) =>
+      [...readFileSync(f, 'utf8').matchAll(/CAMERA_PHOTOS\.(\w+)|\bframe="(\w+)"/g)].map((m) => m[1] ?? m[2]),
+    );
+    expect([...uses].sort()).toEqual(Object.keys(CAMERA_PHOTOS).sort());
   });
 
   it('every guide screen shows a real screenshot or a drawn screen', () => {

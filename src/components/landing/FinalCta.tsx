@@ -3,7 +3,7 @@ import {betaMailto, site} from '@site/src/data/site';
 import Icon from '../brand/Icon';
 import Button from '../ui/Button';
 import Section from '../ui/Section';
-import StoreBadge from '../ui/StoreBadge';
+import {StoreBadges} from '../ui/StoreBadge';
 import styles from './FinalCta.module.css';
 
 const FLOATERS = [0, 1, 2, 3, 4, 5];
@@ -29,7 +29,7 @@ export default function FinalCta() {
         <span className={styles.meta}>Free · {site.minAndroid}</span>
       </div>
       <div className={styles.badges}>
-        <StoreBadge label="Google Play" href={site.googlePlayUrl} />
+        <StoreBadges />
       </div>
     </Section>
   );

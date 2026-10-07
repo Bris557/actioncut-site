@@ -8,7 +8,6 @@ import FreeLater from '@site/src/components/landing/FreeLater';
 import Gallery from '@site/src/components/landing/Gallery';
 import Hero from '@site/src/components/landing/Hero';
 import HowItWorks from '@site/src/components/landing/HowItWorks';
-import IphoneSoon from '@site/src/components/landing/IphoneSoon';
 import PrivacyFaq from '@site/src/components/landing/PrivacyFaq';
 import Problem from '@site/src/components/landing/Problem';
 import UseCases from '@site/src/components/landing/UseCases';
@@ -26,7 +25,6 @@ export default function Home() {
         <Features />
         <Gallery />
         <Benefits />
-        <IphoneSoon />
         <FreeLater />
         <Beta />
         <PrivacyFaq />

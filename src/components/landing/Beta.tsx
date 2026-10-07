@@ -4,7 +4,7 @@ import Shape from '../brand/Shapes';
 import Button from '../ui/Button';
 import {RevealGroup, RevealItem} from '../ui/Reveal';
 import Section from '../ui/Section';
-import StoreBadge from '../ui/StoreBadge';
+import {StoreBadges} from '../ui/StoreBadge';
 import styles from './Beta.module.css';
 
 const STEPS: {icon: IconName; title: string; body: string}[] = [
@@ -28,15 +28,15 @@ export default function Beta() {
         </RevealItem>
         <RevealItem>
           <p className="ac-lead">
-            ActionCut is in testing before it arrives on Google Play. Send us an email and we’ll reply with the test
-            version. You need a phone with {site.minAndroid}.
+            ActionCut is in testing before it arrives on Google Play and the App Store. Send us an email and we’ll
+            reply with the test version. For now it’s Android-only and needs {site.minAndroid}.
           </p>
         </RevealItem>
         <RevealItem className={styles.actions}>
           <Button href={betaMailto()} size="l" icon={<Icon name="mail" />}>
             Email us to join the beta
           </Button>
-          <StoreBadge label="Google Play" href={site.googlePlayUrl} />
+          <StoreBadges />
         </RevealItem>
         <RevealItem>
           <p className={styles.address}>

@@ -1,20 +1,17 @@
 import {motion, useScroll, useTransform} from 'motion/react';
 import {useRef} from 'react';
-import {TAGS} from '@site/src/data/tags';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import {CLIP_TILES} from '@site/src/data/clips';
 import Icon from '../brand/Icon';
-import Scene, {type SceneKind} from '../phone/Scene';
 import {RevealGroup, RevealItem} from '../ui/Reveal';
 import Section from '../ui/Section';
 import styles from './Problem.module.css';
 
 const PINS = [12, 31, 38, 63, 86];
-const CLIPS: {kind: SceneKind; shift: number; tag?: string}[] = [
-  {kind: 'pitch', shift: -6, tag: TAGS.goal.color},
-  {kind: 'pitch', shift: 8, tag: TAGS.save.color},
-  {kind: 'pitch', shift: 0, tag: TAGS.assist.color},
-  {kind: 'pitch', shift: -10, tag: TAGS.goal.color},
-  {kind: 'pitch', shift: 5},
-];
+
+function ClipTile({src, label}: {src: string; label: string}) {
+  return <img src={useBaseUrl(src)} alt={label} loading="lazy" decoding="async" draggable={false} />;
+}
 
 export default function Problem() {
   const ref = useRef<HTMLDivElement>(null);
@@ -64,11 +61,9 @@ export default function Problem() {
           <Icon name="arrowRight" />5 moments → 5 clips · 7 s each
         </div>
         <RevealGroup className={styles.clips}>
-          {CLIPS.map((clip, i) => (
-            <RevealItem key={i} className={styles.clip}>
-              <Scene kind={clip.kind} shift={clip.shift} />
-              {clip.tag && <span className={styles.clipTag} style={{background: clip.tag}} />}
-              <span className={styles.clipTime}>0:07</span>
+          {CLIP_TILES.map((tile) => (
+            <RevealItem key={tile.src} className={styles.clip}>
+              <ClipTile src={tile.src} label={tile.label} />
             </RevealItem>
           ))}
         </RevealGroup>

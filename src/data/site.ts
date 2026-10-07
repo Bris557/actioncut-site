@@ -7,7 +7,6 @@ export type SiteInfo = {
   /** Direct APK link handed to beta testers by email; not linked from the site. */
   apkUrl: string;
   minAndroid: string;
-  minIos: string;
   /** Open question (spec §12): set before the site is published. */
   contactEmail: string | null;
   /** Open question (spec §12): set before the site is published. */
@@ -25,7 +24,6 @@ export const site: SiteInfo = {
     'Film your kid’s game with your usual camera, tap a floating button at every great play, and get a short clip of each moment — cut right on your phone.',
   apkUrl: '/actioncut-latest.apk',
   minAndroid: 'Android 14 or newer',
-  minIos: 'iOS 26 or newer',
   contactEmail: 'pigmentator@gmail.com',
   publisher: null,
   googlePlayUrl: null,

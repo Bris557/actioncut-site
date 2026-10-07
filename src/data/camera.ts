@@ -1,7 +1,13 @@
-/** Real frames from a game, shown as the camera viewfinder under the drawn ActionCut overlay. */
+/**
+ * Real frames from games, shown as the camera viewfinder under the drawn ActionCut overlay.
+ * Each one is used in exactly one place, so no two phones on the site show the same shot.
+ */
 export const CAMERA_PHOTOS = {
-  wide: '/img/camera/rink-1.webp',
-  close: '/img/camera/rink-2.webp',
-  /** The iPhone Lock Screen wallpaper behind the Live Activity. */
-  lockScreen: '/img/camera/rink-lock.webp',
+  shot: '/img/camera/shot.webp',
+  wide: '/img/camera/wide.webp',
+  celebration: '/img/camera/celebration.webp',
+  scrum: '/img/camera/scrum.webp',
+  zone: '/img/camera/zone.webp',
 } as const;
+
+export type CameraFrame = keyof typeof CAMERA_PHOTOS;

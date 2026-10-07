@@ -42,7 +42,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How can I try it now?',
-    a: 'ActionCut is in beta testing before it comes to Google Play. Email us and we’ll send you a link to the test version.',
+    a: 'ActionCut is in beta testing before it comes to Google Play and the App Store. Email us and we’ll send you a link to the Android test version.',
     link: {label: 'Join the beta', to: '/#beta'},
   },
 ];

@@ -21,9 +21,9 @@ function StepMock({screen}: {screen: StepScreen}) {
         </>
       );
     case 'camera':
-      return <CameraStill step="button" />;
+      return <CameraStill step="button" frame="wide" />;
     case 'tags':
-      return <CameraStill step="tags" />;
+      return <CameraStill step="tags" frame="celebration" />;
     case 'event':
       return <Shot src="/img/screens/event.webp" />;
   }
