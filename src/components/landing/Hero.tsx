@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import {AnimatePresence, motion, useInView, useReducedMotion} from 'motion/react';
 import {useCallback, useEffect, useRef, useState, type PointerEvent} from 'react';
 import {CAMERA_PHOTOS} from '@site/src/data/camera';
-import {HERO_CLIPS} from '@site/src/data/heroClips';
+import {CLIPS_PER_VISIT, HERO_CLIPS} from '@site/src/data/heroClips';
 import {site} from '@site/src/data/site';
 import {QUICK_TAGS} from '@site/src/data/tags';
 import {formatClock, heroFrame} from '@site/src/lib/heroLoop';
@@ -20,7 +20,6 @@ import styles from './Hero.module.css';
 // Two fixed lines: the width-axis 'breathe' animation must never re-wrap the headline.
 const LINES = [['Tap.', 'Tag.'], ['Done.']];
 const TRUST = ['No account', 'Videos stay on your phone', 'Works with your camera app'];
-const CLIPS_PER_VISIT = 3;
 const MARKS_BEFORE = 5;
 /** Quick tags close after 5 s; the tick stops a little later. */
 const TAGS_MS = 5500;
@@ -56,7 +55,7 @@ function useEasterEgg() {
 }
 
 /**
- * Three random game clips loop in the viewfinder; at each clip's key play the button "taps", the count
+ * Four random game clips loop in the viewfinder; at each clip's key play the button "taps", the count
  * grows and the quick tags open — and stay their 5 s even when the next clip has started.
  */
 function useGameClips(enabled: boolean) {

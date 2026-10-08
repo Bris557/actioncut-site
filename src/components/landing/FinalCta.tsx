@@ -1,5 +1,5 @@
 import type {CSSProperties} from 'react';
-import {betaMailto, site} from '@site/src/data/site';
+import {site} from '@site/src/data/site';
 import Icon from '../brand/Icon';
 import Button from '../ui/Button';
 import Section from '../ui/Section';
@@ -23,7 +23,7 @@ export default function FinalCta() {
       </h2>
       <p className="ac-lead">Join the beta and spend the next tournament watching the game — not digging through the video afterwards.</p>
       <div className={styles.ctas}>
-        <Button href={betaMailto()} size="l" variant="dark" icon={<Icon name="mail" />}>
+        <Button to="/#beta" size="l" variant="dark" icon={<Icon name="mail" />}>
           Join the beta
         </Button>
         <span className={styles.meta}>Free · {site.minAndroid}</span>

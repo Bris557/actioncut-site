@@ -16,6 +16,7 @@ type Props = Common &
     | {to: string; href?: never; download?: never; onClick?: never}
     | {href: string; download?: boolean; to?: never; onClick?: never}
     | {onClick: () => void; to?: never; href?: never; download?: never}
+    | {submit: true; disabled?: boolean; to?: never; href?: never; download?: never; onClick?: never}
   );
 
 export default function Button(props: Props) {
@@ -43,6 +44,13 @@ export default function Button(props: Props) {
       <a href={props.href} download={props.download || undefined} className={cls}>
         {content}
       </a>
+    );
+  }
+  if ('submit' in props) {
+    return (
+      <button type="submit" disabled={props.disabled} className={cls}>
+        {content}
+      </button>
     );
   }
   return (

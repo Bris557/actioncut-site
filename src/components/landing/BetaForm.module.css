@@ -1,0 +1,169 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: var(--ac-radius-l);
+  background: var(--ac-item);
+  box-shadow: 0 24px 48px -32px rgba(94, 39, 0, 0.45);
+}
+
+.toggle {
+  display: flex;
+  border: 1px solid var(--ac-outline);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.segment {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--ac-ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.segment + .segment {
+  border-left: 1px solid var(--ac-outline);
+}
+
+.segment:focus-visible {
+  outline: 3px solid var(--ac-orange);
+  outline-offset: -3px;
+}
+
+/* Two classes: a one-class modifier can lose to its base in the minified bundle (see CLAUDE.md). */
+.segment.segmentOn {
+  background: #ffdbca;
+  color: #331200;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 650;
+  color: var(--ac-ink-2);
+}
+
+.input {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid var(--ac-outline-variant);
+  border-radius: var(--ac-radius-s);
+  background: var(--ac-surface);
+  color: var(--ac-ink);
+  font: inherit;
+  font-size: 16px;
+}
+
+.input::placeholder {
+  color: var(--ac-outline);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--ac-primary);
+  box-shadow: 0 0 0 3px rgba(255, 122, 26, 0.3);
+}
+
+.input[aria-invalid] {
+  border-color: #ba1a1a;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 88px;
+}
+
+.error {
+  font-size: 14px;
+  color: #ba1a1a;
+}
+
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin-top: 4px;
+}
+
+.note {
+  font-size: 14px;
+  color: var(--ac-ink-2);
+}
+
+.status {
+  margin: 0;
+  font-size: 15px;
+  color: #ba1a1a;
+}
+
+.status:empty {
+  display: none;
+}
+
+.done {
+  align-items: flex-start;
+}
+
+.doneMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  background: var(--ac-orange);
+  color: var(--ac-on-orange);
+}
+
+.doneTitle {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 720;
+}
+
+.doneBody {
+  margin: 0;
+  font-size: 17px;
+  color: var(--ac-ink-2);
+}
+
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

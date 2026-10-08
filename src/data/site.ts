@@ -1,5 +1,3 @@
-import {mailtoLink} from '../lib/mailto';
-
 export type SiteInfo = {
   name: string;
   url: string;
@@ -9,6 +7,8 @@ export type SiteInfo = {
   minAndroid: string;
   /** Open question (spec §12): set before the site is published. */
   contactEmail: string | null;
+  /** Formspree form (project 3107957750802415056, `formspree.json`) for beta sign-ups and feedback. */
+  formEndpoint: string;
   /** Open question (spec §12): set before the site is published. */
   publisher: string | null;
   googlePlayUrl: string | null;
@@ -25,17 +25,9 @@ export const site: SiteInfo = {
   apkUrl: '/actioncut-latest.apk',
   minAndroid: 'Android 14 or newer',
   contactEmail: 'pigmentator@gmail.com',
+  formEndpoint: 'https://formspree.io/p/3107957750802415056/f/beta',
   publisher: null,
   googlePlayUrl: null,
   appStoreUrl: null,
   copyrightYear: 2026,
 };
-
-/** "Join the beta" email with a short template the tester fills in. */
-export function betaMailto(): string {
-  return mailtoLink(
-    site.contactEmail ?? '',
-    'ActionCut beta',
-    'Hi! I’d like to test ActionCut.\n\nPhone model:\nAndroid version:\nSport I film:\n',
-  );
-}

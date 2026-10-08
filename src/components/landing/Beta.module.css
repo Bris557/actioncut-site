@@ -1,7 +1,7 @@
 .inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
   gap: clamp(32px, 5vw, 72px);
 }
 
@@ -34,12 +34,16 @@
   font-weight: 700;
 }
 
+.form {
+  position: relative;
+}
+
 .steps {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  margin: 0;
+  margin: 28px 0 0;
   padding: 0;
   list-style: none;
 }

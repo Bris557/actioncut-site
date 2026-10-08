@@ -4,7 +4,7 @@ import {describe, expect, it} from 'vitest';
 import {CAMERA_PHOTOS} from './camera';
 import {CLIP_TILES} from './clips';
 import {gallery} from './gallery';
-import {HERO_CLIPS} from './heroClips';
+import {CLIPS_PER_VISIT, HERO_CLIPS} from './heroClips';
 import {useCases} from './useCases';
 
 const root = process.cwd();
@@ -57,7 +57,15 @@ describe('screenshots', () => {
       ['/video/game-4.mp4', 10],
       ['/video/game-5.mp4', 10],
       ['/video/game-6.mp4', 15],
+      ['/video/game-7.mp4', 10],
+      ['/video/game-8.mp4', 8],
+      ['/video/game-9.mp4', 8],
     ]);
+  });
+
+  it('each visit loops four different clips', () => {
+    expect(CLIPS_PER_VISIT).toBe(4);
+    expect(HERO_CLIPS.length).toBeGreaterThan(CLIPS_PER_VISIT);
   });
 
   it('every camera photo exists', () => {

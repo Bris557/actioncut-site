@@ -30,7 +30,8 @@ Docusaurus 3.8.1 (TypeScript, React 19) at the **repository root** — there is 
 
 - Design tokens live in `src/css/custom.css` (`--ac-*`, the Android app's light scheme). Light theme only.
 - Copy is English and must match what the Android app does (`/Volumes/devssd/dev/actioncut-app`). No merging clips into one video, no "zero data collection".
-- The site has no public APK link: CTAs lead to the beta section (`/#beta`, a mailto to `site.contactEmail`). Testers get the direct link `/actioncut-latest.apk` by email.
+- The site has no public APK link: CTAs lead to the beta section (`/#beta`) and its form. Testers get the direct link `/actioncut-latest.apk` by email.
+- The beta and feedback form posts to Formspree (`site.formEndpoint`), so the site stays static. Its fields and email action live in `formspree.json`; deploy changes with `npx @formspree/cli deploy` (the key is `FORMSPREE_DEPLOY_KEY` in the git-ignored `.env`). Anything the form collects must be in the Privacy Policy.
 - No `Date.now()`/`window` during render; respect reduced motion (see the spec).
 - CSS is minified by `orderSafeCssMinifier` in `docusaurus.config.ts` (cssnano without `mergeRules`). Docusaurus' default merged rules across modules and moved one-class modifiers above their base in production only (invisible hero videos, faded How it works steps). Keep it, and still write a modifier that overrides its base as a two-class selector (`.video.on`).
 - Spec: `docs/superpowers/specs/2026-10-07-site-redesign-design.md`.
@@ -42,4 +43,4 @@ Docusaurus 3.8.1 (TypeScript, React 19) at the **repository root** — there is 
 
 ## Screenshots
 
-Real screenshots are WebP, 720 px wide, in `static/img/screens/` (`<name>.webp` light, `<name>-dark.webp` dark). Pass `src="/img/screens/<name>.webp"` to a `<Screen>` in `guide/*.mdx`, set `screen.src` in `src/data/useCases.ts`, or add a light/dark pair to `src/data/gallery.ts`. The camera app is drawn (`CameraOverlayMock`, `CameraStill`) over real frames in `static/img/camera/`. `npm test` fails on a missing file or a guide `<Screen>` without `src`/`fallback`. The hero phone loops three random game clips from `src/data/heroClips.ts` (`static/video/`, 540 × 960 H.264, no sound) — picked after hydration, paused off screen, skipped under reduced motion. Details and the conversion commands are in README.md.
+Real screenshots are WebP, 720 px wide, in `static/img/screens/` (`<name>.webp` light, `<name>-dark.webp` dark). Pass `src="/img/screens/<name>.webp"` to a `<Screen>` in `guide/*.mdx`, set `screen.src` in `src/data/useCases.ts`, or add a light/dark pair to `src/data/gallery.ts`. The camera app is drawn (`CameraOverlayMock`, `CameraStill`) over real frames in `static/img/camera/`. `npm test` fails on a missing file or a guide `<Screen>` without `src`/`fallback`. The hero phone loops four random game clips from `src/data/heroClips.ts` (`static/video/`, 540 × 960 H.264, no sound) — picked after hydration, paused off screen, skipped under reduced motion. Details and the conversion commands are in README.md.
