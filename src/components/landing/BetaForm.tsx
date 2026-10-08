@@ -7,7 +7,7 @@ import Icon from '../brand/Icon';
 import Button from '../ui/Button';
 import styles from './BetaForm.module.css';
 
-const EMPTY: FormValues = {topic: 'beta', email: '', phone: '', android: '', sport: '', message: '', gotcha: ''};
+const EMPTY: FormValues = {topic: 'beta', name: '', email: '', phone: '', sport: '', message: '', gotcha: ''};
 const TOPICS: {id: FormTopic; label: string}[] = [
   {id: 'beta', label: 'Join the beta'},
   {id: 'feedback', label: 'Send feedback'},
@@ -78,10 +78,18 @@ export default function BetaForm() {
   }
 
   const beta = values.topic === 'beta';
-  const field = (key: 'phone' | 'android' | 'sport', label: string, placeholder: string) => (
+  const field = (key: 'name' | 'phone' | 'sport', label: string, placeholder: string, autoComplete?: string) => (
     <label className={styles.field}>
       <span className={styles.label}>{label}</span>
-      <input className={styles.input} name={key} value={values[key]} onChange={set(key)} placeholder={placeholder} maxLength={100} />
+      <input
+        className={styles.input}
+        name={key}
+        autoComplete={autoComplete}
+        value={values[key]}
+        onChange={set(key)}
+        placeholder={placeholder}
+        maxLength={100}
+      />
     </label>
   );
 
@@ -107,31 +115,33 @@ export default function BetaForm() {
         ))}
       </div>
 
-      <label className={styles.field}>
-        <span className={styles.label}>Email</span>
-        <input
-          className={styles.input}
-          type="email"
-          name="email"
-          autoComplete="email"
-          value={values.email}
-          onChange={set('email')}
-          placeholder="you@example.com"
-          maxLength={200}
-          aria-invalid={errors.email ? true : undefined}
-          aria-describedby={errors.email ? `${id}-email-error` : undefined}
-        />
-        {errors.email && (
-          <span id={`${id}-email-error`} className={styles.error}>
-            {errors.email}
-          </span>
-        )}
-      </label>
+      <div className={styles.row}>
+        {field('name', 'Your name', 'e.g. Anna', 'name')}
+        <label className={styles.field}>
+          <span className={styles.label}>Email</span>
+          <input
+            className={styles.input}
+            type="email"
+            name="email"
+            autoComplete="email"
+            value={values.email}
+            onChange={set('email')}
+            placeholder="you@example.com"
+            maxLength={200}
+            aria-invalid={errors.email ? true : undefined}
+            aria-describedby={errors.email ? `${id}-email-error` : undefined}
+          />
+          {errors.email && (
+            <span id={`${id}-email-error`} className={styles.error}>
+              {errors.email}
+            </span>
+          )}
+        </label>
+      </div>
 
       {beta && (
         <div className={styles.row}>
           {field('phone', 'Phone model', 'e.g. Pixel 8')}
-          {field('android', 'Android version', 'e.g. 15')}
           {field('sport', 'Sport you film', 'e.g. Hockey')}
         </div>
       )}
@@ -177,8 +187,7 @@ export default function BetaForm() {
         </span>
       </div>
       <p className={styles.status} role="alert">
-        {status === 'failed' &&
-          `Couldn’t send${failure ? `: ${failure}` : ''}. Try again, or email us at ${site.contactEmail ?? ''}.`}
+        {status === 'failed' && `Couldn’t send${failure ? `: ${failure}` : ''}. Check your connection and try again.`}
       </p>
     </form>
   );

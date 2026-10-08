@@ -8,7 +8,7 @@ import BetaForm from './BetaForm';
 import styles from './Beta.module.css';
 
 const STEPS: {icon: IconName; title: string; body: string}[] = [
-  {icon: 'mail', title: 'Fill in the form', body: 'Your email, phone model, Android version and the sport you film.'},
+  {icon: 'mail', title: 'Fill in the form', body: 'Your name, email, phone model and the sport you film.'},
   {icon: 'download', title: 'Get the test version', body: 'We email you a link to install ActionCut on your phone.'},
   {icon: 'crosshair', title: 'Film a game, tell us how it went', body: 'What worked, what didn’t, what you wish it did — the same form takes feedback.'},
 ];
@@ -51,11 +51,6 @@ export default function Beta() {
         </RevealItem>
         <RevealItem className={styles.actions}>
           <StoreBadges />
-        </RevealItem>
-        <RevealItem>
-          <p className={styles.address}>
-            Prefer email? Write to <a href={`mailto:${site.contactEmail ?? ''}`}>{site.contactEmail}</a>
-          </p>
         </RevealItem>
       </RevealGroup>
       <div className={styles.form}>

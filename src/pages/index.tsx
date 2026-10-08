@@ -1,7 +1,6 @@
 import Layout from '@theme/Layout';
 import Benefits from '@site/src/components/landing/Benefits';
 import Beta from '@site/src/components/landing/Beta';
-import ButtonDemo from '@site/src/components/landing/ButtonDemo';
 import Features from '@site/src/components/landing/Features';
 import FinalCta from '@site/src/components/landing/FinalCta';
 import FreeLater from '@site/src/components/landing/FreeLater';
@@ -23,7 +22,6 @@ export default function Home() {
         <Benefits />
         <MadeByParents />
         <HowItWorks />
-        <ButtonDemo />
         <UseCases />
         <Features />
         <Gallery />

@@ -18,7 +18,7 @@ Docusaurus 3.8.1 (TypeScript, React 19) at the **repository root** — there is 
 
 - `src/pages/index.tsx` — landing page, composed of `src/components/landing/*` (one file per section)
 - `src/data/*` — all landing copy, tags, changelog, site constants (`site.ts`: APK path, contact, store links)
-- `src/lib/*` — pure logic with tests: demo gesture rules, hero loop, changelog, shapes
+- `src/lib/*` — pure logic with tests: hero loop and clips, the beta form, changelog, shapes
 - `src/components/phone/*` — phone frame, `Shot` (a screenshot inside it), the drawn camera app with ActionCut's overlay, the drawn moment with versions; sizes in `calc(var(--u) * N)`, 1 `--u` = 1 px of a 390-px screen
 - `src/components/ui/*`, `src/components/brand/*` — buttons, chips, sections, reveal, icons, logo, M3 shapes
 - `guide/*.mdx` — the Guide, served at `/guide`; `<Screen>` works in MDX without import

@@ -2,9 +2,9 @@ export type FormTopic = 'beta' | 'feedback';
 
 export type FormValues = {
   topic: FormTopic;
+  name: string;
   email: string;
   phone: string;
-  android: string;
   sport: string;
   message: string;
   /** Honeypot: hidden from people; Formspree drops a submission that fills it. */
@@ -28,8 +28,8 @@ export function validateForm(values: FormValues): FormErrors {
 export function formPayload(values: FormValues): Record<string, string> {
   const fields =
     values.topic === 'beta'
-      ? {email: values.email, phone: values.phone, android: values.android, sport: values.sport, message: values.message}
-      : {email: values.email, message: values.message};
+      ? {name: values.name, email: values.email, phone: values.phone, sport: values.sport, message: values.message}
+      : {name: values.name, email: values.email, message: values.message};
   const payload: Record<string, string> = {topic: values.topic};
   for (const [key, value] of Object.entries(fields)) {
     const trimmed = value.trim();

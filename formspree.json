@@ -3,10 +3,10 @@
     "beta": {
       "name": "Beta sign-up & feedback",
       "fields": {
+        "name": {"type": "text", "maxlength": 100},
         "email": {"type": "email", "required": true, "maxlength": 200},
         "topic": {"type": "text", "required": true, "maxlength": 20},
         "phone": {"type": "text", "maxlength": 100},
-        "android": {"type": "text", "maxlength": 20},
         "sport": {"type": "text", "maxlength": 100},
         "message": {"type": "text", "maxlength": 3000}
       },

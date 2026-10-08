@@ -49,17 +49,17 @@ describe('screenshots', () => {
     }
   });
 
-  it('every hero clip taps at the second marked by hand', () => {
+  it('every hero clip taps at its play: 6 s in, after trimming the run-up', () => {
     expect(HERO_CLIPS.map((clip) => [clip.src, clip.markAt])).toEqual([
-      ['/video/game-1.mp4', 8],
-      ['/video/game-2.mp4', 10],
+      ['/video/game-1.mp4', 6],
+      ['/video/game-2.mp4', 6],
       ['/video/game-3.mp4', 4],
-      ['/video/game-4.mp4', 10],
-      ['/video/game-5.mp4', 10],
-      ['/video/game-6.mp4', 15],
-      ['/video/game-7.mp4', 10],
-      ['/video/game-8.mp4', 8],
-      ['/video/game-9.mp4', 8],
+      ['/video/game-4.mp4', 6],
+      ['/video/game-5.mp4', 6],
+      ['/video/game-6.mp4', 6],
+      ['/video/game-7.mp4', 6],
+      ['/video/game-8.mp4', 6],
+      ['/video/game-9.mp4', 6],
     ]);
   });
 

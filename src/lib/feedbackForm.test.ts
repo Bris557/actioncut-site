@@ -3,9 +3,9 @@ import {formPayload, validateForm, type FormValues} from './feedbackForm';
 
 const beta: FormValues = {
   topic: 'beta',
+  name: ' Anna ',
   email: ' parent@example.com ',
   phone: 'Pixel 8',
-  android: '15',
   sport: 'Hockey',
   message: '',
   gotcha: '',
@@ -28,20 +28,25 @@ describe('validateForm', () => {
 });
 
 describe('formPayload', () => {
+  it('leaves the name out when it is empty', () => {
+    expect(formPayload({...beta, name: '  '})).not.toHaveProperty('name');
+  });
+
   it('trims values and leaves out empty fields', () => {
     expect(formPayload(beta)).toEqual({
       topic: 'beta',
+      name: 'Anna',
       email: 'parent@example.com',
       phone: 'Pixel 8',
-      android: '15',
       sport: 'Hockey',
       _gotcha: '',
     });
   });
 
-  it('sends only the email and message for feedback', () => {
+  it('sends only the name, email and message for feedback', () => {
     expect(formPayload({...beta, topic: 'feedback', message: ' Great app '})).toEqual({
       topic: 'feedback',
+      name: 'Anna',
       email: 'parent@example.com',
       message: 'Great app',
       _gotcha: '',
