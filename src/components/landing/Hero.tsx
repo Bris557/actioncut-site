@@ -56,7 +56,7 @@ function useEasterEgg() {
 
 /**
  * Four random game clips loop in the viewfinder; at each clip's key play the button "taps", the count
- * grows and the quick tags open — and stay their 5 s even when the next clip has started.
+ * grows and the quick tags open — until the clip ends: each new clip starts with a clean button.
  */
 function useGameClips(enabled: boolean) {
   const [clips, setClips] = useState<HeroClip[]>([]);
@@ -102,6 +102,8 @@ function useGameClips(enabled: boolean) {
   const onEnded = useCallback(() => {
     if (!marked.current) mark(0);
     marked.current = false;
+    // A new clip starts clean: the quick tags and the red button go with the old one.
+    setMarkedAt(null);
     setActive((a) => (a + 1) % Math.max(1, clips.length));
   }, [clips.length, mark]);
 

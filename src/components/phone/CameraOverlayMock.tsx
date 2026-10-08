@@ -135,7 +135,7 @@ export default function CameraOverlayMock({
             className={styles.chips}
             initial={{opacity: 0, x: 12}}
             animate={{opacity: 1, x: 0}}
-            exit={{opacity: 0, x: 12}}
+            exit={{opacity: 0, x: 12, transition: {duration: 0.15}}}
             transition={{type: 'spring', stiffness: 420, damping: 30}}>
             <span className={styles.timer}>
               <span style={{transform: `scaleX(${countdown})`}} />
