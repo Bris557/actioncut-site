@@ -10,6 +10,16 @@ import {useCases} from './useCases';
 const root = process.cwd();
 const inStatic = (p: string) => existsSync(join(root, 'static', p));
 
+/** Duration in seconds from an MP4's movie header (mvhd box). */
+function mp4Seconds(path: string): number {
+  const buf = readFileSync(path);
+  const at = buf.indexOf('mvhd');
+  const version = buf[at + 4];
+  const timescale = buf.readUInt32BE(at + (version === 1 ? 24 : 16));
+  const duration = version === 1 ? Number(buf.readBigUInt64BE(at + 28)) : buf.readUInt32BE(at + 20);
+  return duration / timescale;
+}
+
 function guideSources(): string[] {
   const dir = join(root, 'guide');
   return readdirSync(dir)
@@ -61,6 +71,14 @@ describe('screenshots', () => {
       ['/video/game-8.mp4', 6],
       ['/video/game-9.mp4', 6],
     ]);
+  });
+
+  it('every hero clip is at most 10 s and ends within 4 s after its play', () => {
+    for (const clip of HERO_CLIPS) {
+      const seconds = mp4Seconds(join(root, 'static', clip.src));
+      expect(seconds, clip.src).toBeLessThanOrEqual(10.05);
+      expect(seconds - clip.markAt, clip.src).toBeLessThanOrEqual(4.05);
+    }
   });
 
   it('each visit loops four different clips', () => {
