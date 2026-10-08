@@ -21,7 +21,7 @@ magick Screenshot.jpg -resize 720x -strip -quality 80 -define webp:method=6 stat
 - **Guide:** `src="/img/screens/<name>.webp"` on a `<Screen>` in `guide/*.mdx`.
 - **Camera app:** the camera can’t be screenshotted while recording, so it is drawn (`src/components/phone/CameraOverlayMock.tsx`, after a real camera screenshot) over real frames from a game in `static/img/camera/`. In MDX: `<Screen fallback={<CameraStill step="button" frame="scrum" />} />` (or `step="tags"`); `frame` is a key of `CAMERA_PHOTOS` in `src/data/camera.ts`, and each frame is used only once.
 
-**Hero videos:** real ActionCut clips in `static/video/` (`game-N.mp4` + its first frame `game-N.webp`), listed in `src/data/heroClips.ts`. Each clip keeps 6 s before its play and at most 4 s after; each visit plays four at random in a loop, and the button taps at each clip's `markAt` second. Prepare a clip with:
+**Hero videos:** real ActionCut clips in `static/video/` (`game-N.mp4` + its first frame `game-N.webp`), listed in `src/data/heroClips.ts` with a `?v=` version per file (MD5, checked by `npm test`) so Cloudflare serves a re-cut at once. Each clip keeps 6 s before its play and at most 4 s after; each visit plays four at random in a loop, and the button taps at each clip's `markAt` second. Prepare a clip with:
 
 ```bash
 ffmpeg -ss <play−6> -t <10> -i clip.mp4 -an -vf "scale=540:960:flags=lanczos,fps=30" -c:v libx264 -preset slow -crf 26 -profile:v high -pix_fmt yuv420p -movflags +faststart static/video/game-N.mp4

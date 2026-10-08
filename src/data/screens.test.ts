@@ -1,3 +1,4 @@
+import {createHash} from 'node:crypto';
 import {existsSync, readdirSync, readFileSync} from 'node:fs';
 import {join} from 'node:path';
 import {describe, expect, it} from 'vitest';
@@ -8,7 +9,10 @@ import {CLIPS_PER_VISIT, HERO_CLIPS} from './heroClips';
 import {useCases} from './useCases';
 
 const root = process.cwd();
-const inStatic = (p: string) => existsSync(join(root, 'static', p));
+/** A URL under static/ with its `?v=` cache-busting version dropped. */
+const filePath = (url: string) => join(root, 'static', url.split('?')[0]);
+const inStatic = (p: string) => existsSync(filePath(p));
+const md5 = (url: string) => createHash('md5').update(readFileSync(filePath(url))).digest('hex');
 
 /** Duration in seconds from an MP4's movie header (mvhd box). */
 function mp4Seconds(path: string): number {
@@ -60,7 +64,7 @@ describe('screenshots', () => {
   });
 
   it('every hero clip taps at its play: 6 s in, after trimming the run-up', () => {
-    expect(HERO_CLIPS.map((clip) => [clip.src, clip.markAt])).toEqual([
+    expect(HERO_CLIPS.map((clip) => [clip.src.split('?')[0], clip.markAt])).toEqual([
       ['/video/game-1.mp4', 6],
       ['/video/game-2.mp4', 6],
       ['/video/game-3.mp4', 4],
@@ -73,9 +77,15 @@ describe('screenshots', () => {
     ]);
   });
 
+  it('every hero clip and poster URL carries its file’s version, so caches pick up a re-cut', () => {
+    for (const clip of HERO_CLIPS) {
+      for (const url of [clip.src, clip.poster]) expect(url).toBe(`${url.split('?')[0]}?v=${md5(url).slice(0, 8)}`);
+    }
+  });
+
   it('every hero clip is at most 10 s and ends within 4 s after its play', () => {
     for (const clip of HERO_CLIPS) {
-      const seconds = mp4Seconds(join(root, 'static', clip.src));
+      const seconds = mp4Seconds(filePath(clip.src));
       expect(seconds, clip.src).toBeLessThanOrEqual(10.05);
       expect(seconds - clip.markAt, clip.src).toBeLessThanOrEqual(4.05);
     }
